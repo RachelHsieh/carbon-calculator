@@ -13,11 +13,285 @@
     
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
       color: #2d5a2d;
       line-height: 1.6;
-      min-height: 100vh;
-      padding: 20px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      min-height: 400vh;
+      background: linear-gradient(135deg, rgba(45, 90, 45, 0.8), rgba(76, 175, 80, 0.7)), 
+                  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="trees" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="15" fill="%23228B22"/><circle cx="60" cy="30" r="18" fill="%2332CD32"/><circle cx="80" cy="15" r="12" fill="%23228B22"/></pattern></defs><rect width="100%" height="100%" fill="%232F5233"/><rect width="100%" height="100%" fill="url(%23trees)" opacity="0.3"/></svg>');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero-slide {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .slide-content {
+      max-width: 1000px;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Slide Navigation */
+    .slide-nav {
+      position: fixed;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .slide-nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .slide-nav-dot.active {
+      background: white;
+      transform: scale(1.3);
+    }
+
+    /* PowerPoint-style content layouts */
+    .ppt-title-slide {
+      text-align: center;
+    }
+
+    .ppt-content-slide {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .ppt-full-slide {
+      text-align: center;
+      max-width: 800px;
+    }
+
+    .ppt-bullet-points {
+      list-style: none;
+      padding: 0;
+    }
+
+    .ppt-bullet-points li {
+      margin: 20px 0;
+      padding-left: 30px;
+      position: relative;
+      font-size: 1.3rem;
+      line-height: 1.6;
+    }
+
+    .ppt-bullet-points li::before {
+      content: "▶";
+      position: absolute;
+      left: 0;
+      color: #4CAF50;
+      font-size: 1.2em;
+    }
+
+    .ppt-chart {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .ppt-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .ppt-stat-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px 20px;
+      border-radius: 15px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .ppt-stat-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #4CAF50;
+      margin-bottom: 10px;
+    }
+
+    .ppt-stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .slide-title {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .slide-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    /* Image slide styling */
+    .image-slide {
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .image-slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .image-slide-title {
+      font-size: 4rem;
+      font-weight: 900;
+      color: white;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+      letter-spacing: 3px;
+      z-index: 2;
+      position: relative;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-size: 0.9em;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-badge::before {
+      content: "●";
+      color: #4CAF50;
+      margin-right: 10px;
+      font-size: 1.2em;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: -2px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta {
+      background: linear-gradient(45deg, #4CAF50, #45a049);
+      color: white;
+      border: none;
+      padding: 18px 40px;
+      font-size: 1.2em;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .hero-cta:hover {
+      background: linear-gradient(45deg, #45a049, #3d8b40);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(76, 175, 80, 0.6);
+    }
+
+    /* Floating particles animation */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; }
+    .particle:nth-child(3) { width: 3px; height: 3px; left: 70%; animation-delay: 2s; }
+    .particle:nth-child(4) { width: 5px; height: 5px; left: 80%; animation-delay: 3s; }
+    .particle:nth-child(5) { width: 4px; height: 4px; left: 90%; animation-delay: 4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+
+    /* Game Section */
+    .game-section {
+      background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+      padding: 50px 20px;
     }
     
     .container {
@@ -307,6 +581,18 @@
     }
     
     @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.3rem;
+      }
+      
+      .hero-description {
+        font-size: 1rem;
+      }
+      
       .container {
         margin: 10px;
         border-radius: 10px;
@@ -352,326 +638,551 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <button class="language-switch" onclick="switchLanguage()">🌍 English</button>
-      <h1 data-translate="main-title">🌱 ESG減碳森林遊戲</h1>
-      <p data-translate="main-subtitle">記錄你的環保行為，一起創造綠色未來</p>
+  <!-- Hero Section with PowerPoint-style Slides -->
+  <div class="hero-section">
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
     </div>
-    
-    <div class="content">
-      <div class="intro">
-        <h2 data-translate="intro-title">🎮 今天你做了哪些環保行為？</h2>
-        <p data-translate="intro-desc">選擇你今天實際做過的環保行為，系統會計算你的減碳貢獻並轉換成森林中的葉子！</p>
-      </div>
-      
-      <!-- 交通類 -->
-      <div class="category">
-        <div class="category-header" onclick="toggleCategory('transport')">
-          🚲 <span data-translate="transport-title">交通出行類</span>
+
+    <!-- Slide Navigation -->
+    <div class="slide-nav">
+      <div class="slide-nav-dot active" onclick="goToSlide(0)"></div>
+      <div class="slide-nav-dot" onclick="goToSlide(1)"></div>
+      <div class="slide-nav-dot" onclick="goToSlide(2)"></div>
+      <div class="slide-nav-dot" onclick="goToSlide(3)"></div>
+    </div>
+
+    <!-- Slide 1: Title Slide -->
+    <div class="hero-slide" id="slide-0">
+      <div class="slide-content ppt-title-slide">
+        <div class="hero-badge">
+          <span data-translate="specialized-esg">SPECIALIZED ESG</span>
         </div>
-        <div class="category-content" id="transport">
-          <div class="action-item">
-            <input type="checkbox" value="0.2" data-unit="km" id="walk">
-            <div class="action-info">
-              <div class="action-title" data-translate="walk-title">步行代替開車</div>
-              <div class="action-desc" data-translate="walk-desc">每公里減少汽車碳排放</div>
+        <h1 class="hero-title">
+          <span data-translate="hero-title-line1">PRODUCT</span><br>
+          <span data-translate="hero-title-line2">SUSTAINABILITY</span><br>
+          <span data-translate="hero-title-line3">STRATEGY</span>
+        </h1>
+        <h2 class="hero-subtitle" data-translate="hero-subtitle">環保行動遊戲化體驗</h2>
+        <p class="hero-description" data-translate="hero-description">
+          透過互動遊戲記錄您的環保行為，量化減碳貢獻，共同建構永續未來。每一個小行動都是改變世界的重要一步。
+        </p>
+        <a href="#game" class="hero-cta" onclick="scrollToGame()">
+          <span data-translate="hero-cta">開始我的環保之旅</span> 🌱
+        </a>
+      </div>
+    </div>
+
+    <!-- Slide 2: Problem Statement -->
+    <div class="hero-slide" id="slide-1" style="display: none;">
+      <div class="slide-content ppt-content-slide">
+        <div>
+          <h2 class="slide-title" data-translate="problem-title">環境挑戰</h2>
+          <ul class="ppt-bullet-points">
+            <li data-translate="problem-point1">全球碳排放量持續上升</li>
+            <li data-translate="problem-point2">企業ESG合規壓力增加</li>
+            <li data-translate="problem-point3">消費者環保意識提高</li>
+            <li data-translate="problem-point4">缺乏有效的個人行為追蹤工具</li>
+          </ul>
+        </div>
+        <div class="ppt-chart">
+          <h3 style="margin-bottom: 20px;" data-translate="carbon-trends">碳排放趨勢</h3>
+          <div class="ppt-stats-grid">
+            <div class="ppt-stat-card">
+              <div class="ppt-stat-number">+2.1%</div>
+              <div class="ppt-stat-label" data-translate="annual-growth">年增長率</div>
             </div>
-            <div class="co2-value">-0.2kg CO₂/km</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.2" data-unit="km" id="bike">
-            <div class="action-info">
-              <div class="action-title" data-translate="bike-title">騎腳踏車代替開車</div>
-              <div class="action-desc" data-translate="bike-desc">環保又健康的出行方式</div>
+            <div class="ppt-stat-card">
+              <div class="ppt-stat-number">36.8B</div>
+              <div class="ppt-stat-label" data-translate="tons-co2">噸 CO₂/年</div>
             </div>
-            <div class="co2-value">-0.2kg CO₂/km</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.15" data-unit="km" id="public-transport">
-            <div class="action-info">
-              <div class="action-title" data-translate="public-title">搭乘大眾運輸</div>
-              <div class="action-desc" data-translate="public-desc">公車、捷運、火車等</div>
-            </div>
-            <div class="co2-value">-0.15kg CO₂/km</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.1" data-unit="km" id="carpool">
-            <div class="action-info">
-              <div class="action-title" data-translate="carpool-title">共乘拼車</div>
-              <div class="action-desc" data-translate="carpool-desc">與他人分享交通工具</div>
-            </div>
-            <div class="co2-value">-0.1kg CO₂/km</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="2" data-unit="times" id="remote">
-            <div class="action-info">
-              <div class="action-title" data-translate="remote-title">遠距工作/視訊會議</div>
-              <div class="action-desc" data-translate="remote-desc">節省通勤和辦公室用電</div>
-            </div>
-            <div class="co2-value">-2kg CO₂/天</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.02" data-unit="times" id="stairs">
-            <div class="action-info">
-              <div class="action-title" data-translate="stairs-title">走樓梯不搭電梯</div>
-              <div class="action-desc" data-translate="stairs-desc">節能又運動</div>
-            </div>
-            <div class="co2-value">-0.02kg CO₂/次</div>
           </div>
         </div>
       </div>
-      
-      <!-- 飲食類 -->
-      <div class="category">
-        <div class="category-header" onclick="toggleCategory('food')">
-          🍽️ <span data-translate="food-title">飲食生活類</span>
-        </div>
-        <div class="category-content" id="food">
-          <div class="action-item">
-            <input type="checkbox" value="4" data-unit="meals" id="no-beef">
-            <div class="action-info">
-              <div class="action-title" data-translate="no-beef-title">不吃牛肉一餐</div>
-              <div class="action-desc" data-translate="no-beef-desc">牛肉碳足跡最高</div>
-            </div>
-            <div class="co2-value">-4kg CO₂/餐</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="1.5" data-unit="meals" id="vegetarian">
-            <div class="action-info">
-              <div class="action-title" data-translate="vegetarian-title">吃素一餐</div>
-              <div class="action-desc" data-translate="vegetarian-desc">植物性飲食更環保</div>
-            </div>
-            <div class="co2-value">-1.5kg CO₂/餐</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.1" data-unit="times" id="reusable-cup">
-            <div class="action-info">
-              <div class="action-title" data-translate="cup-title">自帶環保杯</div>
-              <div class="action-desc" data-translate="cup-desc">減少一次性杯具使用</div>
-            </div>
-            <div class="co2-value">-0.1kg CO₂/次</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.15" data-unit="bottles" id="water-bottle">
-            <div class="action-info">
-              <div class="action-title" data-translate="bottle-title">自帶水瓶</div>
-              <div class="action-desc" data-translate="bottle-desc">減少購買瓶裝水</div>
-            </div>
-            <div class="co2-value">-0.15kg CO₂/瓶</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.5" data-unit="meals" id="home-cooking">
-            <div class="action-info">
-              <div class="action-title" data-translate="cooking-title">自己煮飯</div>
-              <div class="action-desc" data-translate="cooking-desc">減少外食包裝廢棄物</div>
-            </div>
-            <div class="co2-value">-0.5kg CO₂/餐</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.2" data-unit="portions" id="food-waste">
-            <div class="action-info">
-              <div class="action-title" data-translate="waste-title">減少食物浪費</div>
-              <div class="action-desc" data-translate="waste-desc">避免無謂食物生產</div>
-            </div>
-            <div class="co2-value">-0.2kg CO₂/100g</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 購物消費類 -->
-      <div class="category">
-        <div class="category-header" onclick="toggleCategory('shopping')">
-          🛍️ <span data-translate="shopping-title">購物消費類</span>
-        </div>
-        <div class="category-content" id="shopping">
-          <div class="action-item">
-            <input type="checkbox" value="0.1" data-unit="times" id="eco-bag">
-            <div class="action-info">
-              <div class="action-title" data-translate="bag-title">自帶環保袋</div>
-              <div class="action-desc" data-translate="bag-desc">拒絕塑膠購物袋</div>
-            </div>
-            <div class="co2-value">-0.1kg CO₂/次</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="5" data-unit="items" id="second-hand">
-            <div class="action-info">
-              <div class="action-title" data-translate="secondhand-title">購買二手商品</div>
-              <div class="action-desc" data-translate="secondhand-desc">延長物品使用壽命</div>
-            </div>
-            <div class="co2-value">-5kg CO₂/件</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="2" data-unit="times" id="repair">
-            <div class="action-info">
-              <div class="action-title" data-translate="repair-title">修理物品</div>
-              <div class="action-desc" data-translate="repair-desc">修理代替丟棄</div>
-            </div>
-            <div class="co2-value">-2kg CO₂/次</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.02" data-unit="items" id="recycle">
-            <div class="action-info">
-              <div class="action-title" data-translate="recycle-title">回收瓶罐</div>
-              <div class="action-desc" data-translate="recycle-desc">正確分類回收</div>
-            </div>
-            <div class="co2-value">-0.02kg CO₂/個</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 居家節能類 -->
-      <div class="category">
-        <div class="category-header" onclick="toggleCategory('home')">
-          🏠 <span data-translate="home-title">居家節能類</span>
-        </div>
-        <div class="category-content" id="home">
-          <div class="action-item">
-            <input type="checkbox" value="0.5" data-unit="hours" id="no-ac">
-            <div class="action-info">
-              <div class="action-title" data-translate="ac-title">不開冷氣</div>
-              <div class="action-desc" data-translate="ac-desc">使用風扇或自然通風</div>
-            </div>
-            <div class="co2-value">-0.5kg CO₂/小時</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.1" data-unit="hours" id="ac-temp">
-            <div class="action-info">
-              <div class="action-title" data-translate="temp-title">調高冷氣溫度</div>
-              <div class="action-desc" data-translate="temp-desc">每調高1度約省10%電力</div>
-            </div>
-            <div class="co2-value">-0.1kg CO₂/小時</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.6" data-unit="times" id="cold-wash">
-            <div class="action-info">
-              <div class="action-title" data-translate="wash-title">用冷水洗衣</div>
-              <div class="action-desc" data-translate="wash-desc">減少加熱水的能耗</div>
-            </div>
-            <div class="co2-value">-0.6kg CO₂/次</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.2" data-unit="minutes" id="short-shower">
-            <div class="action-info">
-              <div class="action-title" data-translate="shower-title">縮短淋浴時間</div>
-              <div class="action-desc" data-translate="shower-desc">每減少1分鐘</div>
-            </div>
-            <div class="co2-value">-0.2kg CO₂/分鐘</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.1" data-unit="days" id="unplug">
-            <div class="action-info">
-              <div class="action-title" data-translate="unplug-title">拔掉待機電器</div>
-              <div class="action-desc" data-translate="unplug-desc">避免待機耗電</div>
-            </div>
-            <div class="co2-value">-0.1kg CO₂/天</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.08" data-unit="hours" id="led">
-            <div class="action-info">
-              <div class="action-title" data-translate="led-title">使用LED燈具</div>
-              <div class="action-desc" data-translate="led-desc">LED比傳統燈泡省電</div>
-            </div>
-            <div class="co2-value">-0.08kg CO₂/小時</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 辦公環保類 -->
-      <div class="category">
-        <div class="category-header" onclick="toggleCategory('office')">
-          💼 <span data-translate="office-title">辦公環保類</span>
-        </div>
-        <div class="category-content" id="office">
-          <div class="action-item">
-            <input type="checkbox" value="0.005" data-unit="sheets" id="double-print">
-            <div class="action-info">
-              <div class="action-title" data-translate="print-title">雙面列印</div>
-              <div class="action-desc" data-translate="print-desc">節省紙張使用</div>
-            </div>
-            <div class="co2-value">-0.005kg CO₂/張</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.01" data-unit="times" id="towel">
-            <div class="action-info">
-              <div class="action-title" data-translate="towel-title">用毛巾代替紙巾</div>
-              <div class="action-desc" data-translate="towel-desc">可重複使用</div>
-            </div>
-            <div class="co2-value">-0.01kg CO₂/次</div>
-          </div>
-          
-          <div class="action-item">
-            <input type="checkbox" value="0.05" data-unit="times" id="digital">
-            <div class="action-info">
-              <div class="action-title" data-translate="digital-title">電子化作業</div>
-              <div class="action-desc" data-translate="digital-desc">減少紙本文件</div>
-            </div>
-            <div class="co2-value">-0.05kg CO₂/次</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="calculate-section">
-        <button class="calculate-btn" onclick="calculate()">
-          🧮 <span data-translate="calculate-btn">計算我的環保貢獻</span>
-        </button>
-      </div>
-      
-      <div class="result" id="result">
-        <h2 data-translate="result-title">🎉 恭喜！你今天為地球做了很棒的事！</h2>
+    </div>
+
+    <!-- Slide 3: Solution Overview -->
+    <div class="hero-slide" id="slide-2" style="display: none;">
+      <div class="slide-content ppt-full-slide">
+        <h2 class="slide-title" data-translate="solution-title">解決方案</h2>
+        <p class="slide-subtitle" data-translate="solution-subtitle">遊戲化環保行為追蹤平台</p>
         
-        <div class="result-stats">
-          <div class="stat-card">
-            <div class="stat-number" id="total-co2">0</div>
-            <div class="stat-label" data-translate="co2-label">減少CO₂排放 (kg)</div>
+        <div class="ppt-stats-grid">
+          <div class="ppt-stat-card">
+            <div class="ppt-stat-number">25+</div>
+            <div class="ppt-stat-label" data-translate="eco-types">環保行為類型</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-number" id="tree-equivalent">0</div>
-            <div class="stat-label" data-translate="tree-label">相當於種植樹木 (棵)</div>
+          <div class="ppt-stat-card">
+            <div class="ppt-stat-number" data-translate="realtime">即時</div>
+            <div class="ppt-stat-label" data-translate="carbon-calc">碳排放計算</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-number" id="leaf-count">0</div>
-            <div class="stat-label" data-translate="leaf-label">獲得森林葉子 (片)</div>
+          <div class="ppt-stat-card">
+            <div class="ppt-stat-number" data-translate="social">社交</div>
+            <div class="ppt-stat-label" data-translate="sharing">分享功能</div>
+          </div>
+          <div class="ppt-stat-card">
+            <div class="ppt-stat-number" data-translate="multilang">多語言</div>
+            <div class="ppt-stat-label" data-translate="support">支援</div>
+          </div>
+        </div>
+
+        <ul class="ppt-bullet-points">
+          <li data-translate="solution-point1">交通、飲食、購物、居家、辦公五大類別</li>
+          <li data-translate="solution-point2">科學化碳足跡計算公式</li>
+          <li data-translate="solution-point3">視覺化成果展示（森林葉子系統）</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 4: Impact & Call to Action -->
+    <div class="hero-slide" id="slide-3" style="display: none;">
+      <div class="slide-content ppt-content-slide">
+        <div>
+          <h2 class="slide-title" data-translate="impact-title">預期影響</h2>
+          <ul class="ppt-bullet-points">
+            <li data-translate="impact-point1">提高個人環保意識</li>
+            <li data-translate="impact-point2">量化企業ESG貢獻</li>
+            <li data-translate="impact-point3">建立永續行為習慣</li>
+            <li data-translate="impact-point4">促進社會環保風氣</li>
+          </ul>
+        </div>
+        <div class="ppt-chart">
+          <h3 style="margin-bottom: 20px;" data-translate="target-results">目標成果</h3>
+          <div class="ppt-stats-grid">
+            <div class="ppt-stat-card">
+              <div class="ppt-stat-number">10K+</div>
+              <div class="ppt-stat-label" data-translate="active-users">活躍用戶</div>
+            </div>
+            <div class="ppt-stat-card">
+              <div class="ppt-stat-number">1M+</div>
+              <div class="ppt-stat-label" data-translate="co2-reduction">kg CO₂ 減排</div>
+            </div>
+          </div>
+          <a href="#game" class="hero-cta" onclick="scrollToGame()" style="margin-top: 30px; display: inline-block;">
+            <span data-translate="try-now">立即體驗</span> 🚀
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Section -->
+  <div class="game-section" id="game">
+    <div class="container">
+      <div class="header">
+        <button class="language-switch" onclick="switchLanguage()">🌍 中文</button>
+        <h1 data-translate="main-title">🌱 ESG減碳森林遊戲</h1>
+        <p data-translate="main-subtitle">記錄你的環保行為，一起創造綠色未來</p>
+      </div>
+      
+      <div class="content">
+        <div class="intro">
+          <h2 data-translate="intro-title">🎮 今天你做了哪些環保行為？</h2>
+          <p data-translate="intro-desc">選擇你今天實際做過的環保行為，系統會計算你的減碳貢獻並轉換成森林中的葉子！</p>
+        </div>
+        
+        <!-- 交通類 -->
+        <div class="category">
+          <div class="category-header" onclick="toggleCategory('transport')">
+            🚲 <span data-translate="transport-title">交通出行類</span>
+          </div>
+          <div class="category-content" id="transport">
+            <div class="action-item">
+              <input type="checkbox" value="0.2" data-unit="km" id="walk">
+              <div class="action-info">
+                <div class="action-title" data-translate="walk-title">步行代替開車</div>
+                <div class="action-desc" data-translate="walk-desc">每公里減少汽車碳排放</div>
+              </div>
+              <div class="co2-value">-0.2kg CO₂/km</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.2" data-unit="km" id="bike">
+              <div class="action-info">
+                <div class="action-title" data-translate="bike-title">騎腳踏車代替開車</div>
+                <div class="action-desc" data-translate="bike-desc">環保又健康的出行方式</div>
+              </div>
+              <div class="co2-value">-0.2kg CO₂/km</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.15" data-unit="km" id="public-transport">
+              <div class="action-info">
+                <div class="action-title" data-translate="public-title">搭乘大眾運輸</div>
+                <div class="action-desc" data-translate="public-desc">公車、捷運、火車等</div>
+              </div>
+              <div class="co2-value">-0.15kg CO₂/km</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.1" data-unit="km" id="carpool">
+              <div class="action-info">
+                <div class="action-title" data-translate="carpool-title">共乘拼車</div>
+                <div class="action-desc" data-translate="carpool-desc">與他人分享交通工具</div>
+              </div>
+              <div class="co2-value">-0.1kg CO₂/km</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="2" data-unit="times" id="remote">
+              <div class="action-info">
+                <div class="action-title" data-translate="remote-title">遠距工作/視訊會議</div>
+                <div class="action-desc" data-translate="remote-desc">節省通勤和辦公室用電</div>
+              </div>
+              <div class="co2-value">-2kg CO₂/天</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.02" data-unit="times" id="stairs">
+              <div class="action-info">
+                <div class="action-title" data-translate="stairs-title">走樓梯不搭電梯</div>
+                <div class="action-desc" data-translate="stairs-desc">節能又運動</div>
+              </div>
+              <div class="co2-value">-0.02kg CO₂/次</div>
+            </div>
           </div>
         </div>
         
-        <div class="leaves-display" id="leaves-display"></div>
+        <!-- 飲食類 -->
+        <div class="category">
+          <div class="category-header" onclick="toggleCategory('food')">
+            🍽️ <span data-translate="food-title">飲食生活類</span>
+          </div>
+          <div class="category-content" id="food">
+            <div class="action-item">
+              <input type="checkbox" value="4" data-unit="meals" id="no-beef">
+              <div class="action-info">
+                <div class="action-title" data-translate="no-beef-title">不吃牛肉一餐</div>
+                <div class="action-desc" data-translate="no-beef-desc">牛肉碳足跡最高</div>
+              </div>
+              <div class="co2-value">-4kg CO₂/餐</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="1.5" data-unit="meals" id="vegetarian">
+              <div class="action-info">
+                <div class="action-title" data-translate="vegetarian-title">吃素一餐</div>
+                <div class="action-desc" data-translate="vegetarian-desc">植物性飲食更環保</div>
+              </div>
+              <div class="co2-value">-1.5kg CO₂/餐</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.1" data-unit="times" id="reusable-cup">
+              <div class="action-info">
+                <div class="action-title" data-translate="cup-title">自帶環保杯</div>
+                <div class="action-desc" data-translate="cup-desc">減少一次性杯具使用</div>
+              </div>
+              <div class="co2-value">-0.1kg CO₂/次</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.15" data-unit="bottles" id="water-bottle">
+              <div class="action-info">
+                <div class="action-title" data-translate="bottle-title">自帶水瓶</div>
+                <div class="action-desc" data-translate="bottle-desc">減少購買瓶裝水</div>
+              </div>
+              <div class="co2-value">-0.15kg CO₂/瓶</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.5" data-unit="meals" id="home-cooking">
+              <div class="action-info">
+                <div class="action-title" data-translate="cooking-title">自己煮飯</div>
+                <div class="action-desc" data-translate="cooking-desc">減少外食包裝廢棄物</div>
+              </div>
+              <div class="co2-value">-0.5kg CO₂/餐</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.2" data-unit="portions" id="food-waste">
+              <div class="action-info">
+                <div class="action-title" data-translate="waste-title">減少食物浪費</div>
+                <div class="action-desc" data-translate="waste-desc">避免無謂食物生產</div>
+              </div>
+              <div class="co2-value">-0.2kg CO₂/100g</div>
+            </div>
+          </div>
+        </div>
         
-        <div class="share-section">
-          <h3 data-translate="share-title">分享你的環保成果</h3>
-          <p data-translate="share-desc">讓更多人知道你的環保行動！</p>
-          <button class="share-btn" onclick="shareResult('facebook')">📘 Facebook</button>
-          <button class="share-btn" onclick="shareResult('twitter')">🐦 Twitter</button>
-          <button class="share-btn" onclick="shareResult('line')">💬 LINE</button>
-          <button class="share-btn" onclick="copyResult()">📋 <span data-translate="copy-btn">複製結果</span></button>
+        <!-- 購物消費類 -->
+        <div class="category">
+          <div class="category-header" onclick="toggleCategory('shopping')">
+            🛍️ <span data-translate="shopping-title">購物消費類</span>
+          </div>
+          <div class="category-content" id="shopping">
+            <div class="action-item">
+              <input type="checkbox" value="0.1" data-unit="times" id="eco-bag">
+              <div class="action-info">
+                <div class="action-title" data-translate="bag-title">自帶環保袋</div>
+                <div class="action-desc" data-translate="bag-desc">拒絕塑膠購物袋</div>
+              </div>
+              <div class="co2-value">-0.1kg CO₂/次</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="5" data-unit="items" id="second-hand">
+              <div class="action-info">
+                <div class="action-title" data-translate="secondhand-title">購買二手商品</div>
+                <div class="action-desc" data-translate="secondhand-desc">延長物品使用壽命</div>
+              </div>
+              <div class="co2-value">-5kg CO₂/件</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="2" data-unit="times" id="repair">
+              <div class="action-info">
+                <div class="action-title" data-translate="repair-title">修理物品</div>
+                <div class="action-desc" data-translate="repair-desc">修理代替丟棄</div>
+              </div>
+              <div class="co2-value">-2kg CO₂/次</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.02" data-unit="items" id="recycle">
+              <div class="action-info">
+                <div class="action-title" data-translate="recycle-title">回收瓶罐</div>
+                <div class="action-desc" data-translate="recycle-desc">正確分類回收</div>
+              </div>
+              <div class="co2-value">-0.02kg CO₂/個</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 居家節能類 -->
+        <div class="category">
+          <div class="category-header" onclick="toggleCategory('home')">
+            🏠 <span data-translate="home-title">居家節能類</span>
+          </div>
+          <div class="category-content" id="home">
+            <div class="action-item">
+              <input type="checkbox" value="0.5" data-unit="hours" id="no-ac">
+              <div class="action-info">
+                <div class="action-title" data-translate="ac-title">不開冷氣</div>
+                <div class="action-desc" data-translate="ac-desc">使用風扇或自然通風</div>
+              </div>
+              <div class="co2-value">-0.5kg CO₂/小時</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.1" data-unit="hours" id="ac-temp">
+              <div class="action-info">
+                <div class="action-title" data-translate="temp-title">調高冷氣溫度</div>
+                <div class="action-desc" data-translate="temp-desc">每調高1度約省10%電力</div>
+              </div>
+              <div class="co2-value">-0.1kg CO₂/小時</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.6" data-unit="times" id="cold-wash">
+              <div class="action-info">
+                <div class="action-title" data-translate="wash-title">用冷水洗衣</div>
+                <div class="action-desc" data-translate="wash-desc">減少加熱水的能耗</div>
+              </div>
+              <div class="co2-value">-0.6kg CO₂/次</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.2" data-unit="minutes" id="short-shower">
+              <div class="action-info">
+                <div class="action-title" data-translate="shower-title">縮短淋浴時間</div>
+                <div class="action-desc" data-translate="shower-desc">每減少1分鐘</div>
+              </div>
+              <div class="co2-value">-0.2kg CO₂/分鐘</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.1" data-unit="days" id="unplug">
+              <div class="action-info">
+                <div class="action-title" data-translate="unplug-title">拔掉待機電器</div>
+                <div class="action-desc" data-translate="unplug-desc">避免待機耗電</div>
+              </div>
+              <div class="co2-value">-0.1kg CO₂/天</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.08" data-unit="hours" id="led">
+              <div class="action-info">
+                <div class="action-title" data-translate="led-title">使用LED燈具</div>
+                <div class="action-desc" data-translate="led-desc">LED比傳統燈泡省電</div>
+              </div>
+              <div class="co2-value">-0.08kg CO₂/小時</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 辦公環保類 -->
+        <div class="category">
+          <div class="category-header" onclick="toggleCategory('office')">
+            💼 <span data-translate="office-title">辦公環保類</span>
+          </div>
+          <div class="category-content" id="office">
+            <div class="action-item">
+              <input type="checkbox" value="0.005" data-unit="sheets" id="double-print">
+              <div class="action-info">
+                <div class="action-title" data-translate="print-title">雙面列印</div>
+                <div class="action-desc" data-translate="print-desc">節省紙張使用</div>
+              </div>
+              <div class="co2-value">-0.005kg CO₂/張</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.01" data-unit="times" id="towel">
+              <div class="action-info">
+                <div class="action-title" data-translate="towel-title">用毛巾代替紙巾</div>
+                <div class="action-desc" data-translate="towel-desc">可重複使用</div>
+              </div>
+              <div class="co2-value">-0.01kg CO₂/次</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.05" data-unit="times" id="digital">
+              <div class="action-info">
+                <div class="action-title" data-translate="digital-title">電子化作業</div>
+                <div class="action-desc" data-translate="digital-desc">減少紙本文件</div>
+              </div>
+              <div class="co2-value">-0.05kg CO₂/次</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="calculate-section">
+          <button class="calculate-btn" onclick="calculate()">
+            🧮 <span data-translate="calculate-btn">計算我的環保貢獻</span>
+          </button>
+        </div>
+        
+        <div class="result" id="result">
+          <h2 data-translate="result-title">🎉 恭喜！你今天為地球做了很棒的事！</h2>
+          
+          <div class="result-stats">
+            <div class="stat-card">
+              <div class="stat-number" id="total-co2">0</div>
+              <div class="stat-label" data-translate="co2-label">減少CO₂排放 (kg)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="tree-equivalent">0</div>
+              <div class="stat-label" data-translate="tree-label">相當於種植樹木 (棵)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="leaf-count">0</div>
+              <div class="stat-label" data-translate="leaf-label">獲得森林葉子 (片)</div>
+            </div>
+          </div>
+          
+          <div class="leaves-display" id="leaves-display"></div>
+          
+          <div class="share-section">
+            <h3 data-translate="share-title">分享你的環保成果</h3>
+            <p data-translate="share-desc">讓更多人知道你的環保行動！</p>
+            <button class="share-btn" onclick="shareResult('facebook')">📘 Facebook</button>
+            <button class="share-btn" onclick="shareResult('twitter')">🐦 Twitter</button>
+            <button class="share-btn" onclick="shareResult('line')">💬 LINE</button>
+            <button class="share-btn" onclick="copyResult()">📋 <span data-translate="copy-btn">複製結果</span></button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // Complete translations object
+    // ===== SLIDE NAVIGATION FUNCTIONS =====
+    
+    // Variables for slide management
+    let currentSlide = 0;
+    const totalSlides = 4;
+
+    // Function to switch between slides
+    function goToSlide(slideIndex) {
+      // Hide current slide
+      const currentSlideElement = document.getElementById('slide-' + currentSlide);
+      if (currentSlideElement) {
+        currentSlideElement.style.display = 'none';
+      }
+      
+      // Remove active class from current dot
+      const dots = document.querySelectorAll('.slide-nav-dot');
+      if (dots[currentSlide]) {
+        dots[currentSlide].classList.remove('active');
+      }
+      
+      // Show new slide
+      currentSlide = slideIndex;
+      const newSlideElement = document.getElementById('slide-' + currentSlide);
+      if (newSlideElement) {
+        newSlideElement.style.display = 'flex';
+      }
+      
+      // Add active class to new dot
+      if (dots[currentSlide]) {
+        dots[currentSlide].classList.add('active');
+      }
+    }
+
+    // Smooth scroll to game section
+    function scrollToGame() {
+      const gameElement = document.getElementById('game');
+      if (gameElement) {
+        gameElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Keyboard navigation for slides
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowRight' || event.key === ' ') {
+        const nextSlide = (currentSlide + 1) % totalSlides;
+        goToSlide(nextSlide);
+      } else if (event.key === 'ArrowLeft') {
+        const prevSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        goToSlide(prevSlide);
+      }
+    });
+
+    // ===== LANGUAGE TRANSLATION =====
+    
+    // Translation database
     const translations = {
       'zh': {
+        'specialized-esg': 'SPECIALIZED ESG',
+        'hero-title-line1': 'PRODUCT',
+        'hero-title-line2': 'SUSTAINABILITY',
+        'hero-title-line3': 'STRATEGY',
+        'hero-subtitle': '環保行動遊戲化體驗',
+        'hero-description': '透過互動遊戲記錄您的環保行為，量化減碳貢獻，共同建構永續未來。每一個小行動都是改變世界的重要一步。',
+        'hero-cta': '開始我的環保之旅',
+        'problem-title': '環境挑戰',
+        'problem-point1': '全球碳排放量持續上升',
+        'problem-point2': '企業ESG合規壓力增加',
+        'problem-point3': '消費者環保意識提高',
+        'problem-point4': '缺乏有效的個人行為追蹤工具',
+        'carbon-trends': '碳排放趨勢',
+        'annual-growth': '年增長率',
+        'tons-co2': '噸 CO₂/年',
+        'solution-title': '解決方案',
+        'solution-subtitle': '遊戲化環保行為追蹤平台',
+        'eco-types': '環保行為類型',
+        'realtime': '即時',
+        'carbon-calc': '碳排放計算',
+        'social': '社交',
+        'sharing': '分享功能',
+        'multilang': '多語言',
+        'support': '支援',
+        'solution-point1': '交通、飲食、購物、居家、辦公五大類別',
+        'solution-point2': '科學化碳足跡計算公式',
+        'solution-point3': '視覺化成果展示（森林葉子系統）',
+        'impact-title': '預期影響',
+        'impact-point1': '提高個人環保意識',
+        'impact-point2': '量化企業ESG貢獻',
+        'impact-point3': '建立永續行為習慣',
+        'impact-point4': '促進社會環保風氣',
+        'target-results': '目標成果',
+        'active-users': '活躍用戶',
+        'co2-reduction': 'kg CO₂ 減排',
+        'try-now': '立即體驗',
         'main-title': '🌱 ESG減碳森林遊戲',
         'main-subtitle': '記錄你的環保行為，一起創造綠色未來',
         'intro-title': '🎮 今天你做了哪些環保行為？',
@@ -689,7 +1200,6 @@
         'share-title': '分享你的環保成果',
         'share-desc': '讓更多人知道你的環保行動！',
         'copy-btn': '複製結果',
-        // Transportation actions
         'walk-title': '步行代替開車',
         'walk-desc': '每公里減少汽車碳排放',
         'bike-title': '騎腳踏車代替開車',
@@ -702,7 +1212,6 @@
         'remote-desc': '節省通勤和辦公室用電',
         'stairs-title': '走樓梯不搭電梯',
         'stairs-desc': '節能又運動',
-        // Food actions
         'no-beef-title': '不吃牛肉一餐',
         'no-beef-desc': '牛肉碳足跡最高',
         'vegetarian-title': '吃素一餐',
@@ -715,7 +1224,6 @@
         'cooking-desc': '減少外食包裝廢棄物',
         'waste-title': '減少食物浪費',
         'waste-desc': '避免無謂食物生產',
-        // Shopping actions
         'bag-title': '自帶環保袋',
         'bag-desc': '拒絕塑膠購物袋',
         'secondhand-title': '購買二手商品',
@@ -724,9 +1232,437 @@
         'repair-desc': '修理代替丟棄',
         'recycle-title': '回收瓶罐',
         'recycle-desc': '正確分類回收',
-        // Home energy actions
         'ac-title': '不開冷氣',
         'ac-desc': '使用風扇或自然通風',
+        'temp-title': '調高冷氣溫度',
+        'temp-desc': '每調高1度約省10%電力',
+        'wash-title': '用冷水洗衣',
+        'wash-desc': '減少加熱水的能耗',
+        'shower-title': '縮短淋浴時間',
+        'shower-desc': '每減少1分鐘',
+        'unplug-title': '拔掉待機電器',
+        'unplug-desc': '避免待機耗電',
+        'led-title': '使用LED燈具',
+        'led-desc': 'LED比傳統燈泡省電',
+        'print-title': '雙面列印',
+        'print-desc': '節省紙張使用',
+        'towel-title': '用毛巾代替紙巾',
+        'towel-desc': '可重複使用',
+        'digital-title': '電子化作業',
+        'digital-desc': '減少紙本文件'
+      },
+      'en': {
+        'specialized-esg': 'SPECIALIZED ESG',
+        'hero-title-line1': 'PRODUCT',
+        'hero-title-line2': 'SUSTAINABILITY',
+        'hero-title-line3': 'STRATEGY',
+        'hero-subtitle': 'Gamified Environmental Action Experience',
+        'hero-description': 'Record your environmental actions through interactive games, quantify carbon reduction contributions, and build a sustainable future together. Every small action is an important step in changing the world.',
+        'hero-cta': 'Start My Green Journey',
+        'problem-title': 'Environmental Challenges',
+        'problem-point1': 'Global carbon emissions continue to rise',
+        'problem-point2': 'Increasing ESG compliance pressure for companies',
+        'problem-point3': 'Growing consumer environmental awareness',
+        'problem-point4': 'Lack of effective personal behavior tracking tools',
+        'carbon-trends': 'Carbon Emission Trends',
+        'annual-growth': 'Annual Growth Rate',
+        'tons-co2': 'Tons CO₂/Year',
+        'solution-title': 'Solution',
+        'solution-subtitle': 'Gamified Environmental Behavior Tracking Platform',
+        'eco-types': 'Eco-Action Types',
+        'realtime': 'Real-time',
+        'carbon-calc': 'Carbon Calculation',
+        'social': 'Social',
+        'sharing': 'Sharing Features',
+        'multilang': 'Multi-language',
+        'support': 'Support',
+        'solution-point1': 'Five major categories: Transportation, Food, Shopping, Home, and Office',
+        'solution-point2': 'Scientific carbon footprint calculation formulas',
+        'solution-point3': 'Visual achievement display (Forest Leaf System)',
+        'impact-title': 'Expected Impact',
+        'impact-point1': 'Increase personal environmental awareness',
+        'impact-point2': 'Quantify corporate ESG contributions',
+        'impact-point3': 'Build sustainable behavioral habits',
+        'impact-point4': 'Promote social environmental culture',
+        'target-results': 'Target Results',
+        'active-users': 'Active Users',
+        'co2-reduction': 'kg CO₂ Reduction',
+        'try-now': 'Try Now',
+        'main-title': '🌱 ESG Carbon Forest Game',
+        'main-subtitle': 'Record your eco-actions and create a green future together',
+        'intro-title': '🎮 What eco-actions did you do today?',
+        'intro-desc': 'Select the eco-actions you actually did today, and the system will calculate your carbon reduction contribution and convert it into leaves in the forest!',
+        'transport-title': 'Transportation',
+        'food-title': 'Food & Lifestyle',
+        'shopping-title': 'Shopping & Consumption',
+        'home-title': 'Home Energy Saving',
+        'office-title': 'Office Eco-friendly',
+        'calculate-btn': 'Calculate My Eco Contribution',
+        'result-title': '🎉 Congratulations! You did amazing things for the planet today!',
+        'co2-label': 'CO₂ Reduction (kg)',
+        'tree-label': 'Equivalent Trees Planted',
+        'leaf-label': 'Forest Leaves Earned',
+        'share-title': 'Share Your Eco Achievement',
+        'share-desc': 'Let more people know about your eco actions!',
+        'copy-btn': 'Copy Result',
+        'walk-title': 'Walk Instead of Driving',
+        'walk-desc': 'Reduce car emissions per kilometer',
+        'bike-title': 'Bike Instead of Driving',
+        'bike-desc': 'Eco-friendly and healthy transportation',
+        'public-title': 'Use Public Transport',
+        'public-desc': 'Bus, metro, train, etc.',
+        'carpool-title': 'Carpool/Rideshare',
+        'carpool-desc': 'Share transportation with others',
+        'remote-title': 'Remote Work/Video Conference',
+        'remote-desc': 'Save commuting and office energy',
+        'stairs-title': 'Take Stairs Not Elevator',
+        'stairs-desc': 'Energy saving and exercise',
+        'no-beef-title': 'Skip Beef for One Meal',
+        'no-beef-desc': 'Beef has the highest carbon footprint',
+        'vegetarian-title': 'Vegetarian Meal',
+        'vegetarian-desc': 'Plant-based diet is more eco-friendly',
+        'cup-title': 'Bring Reusable Cup',
+        'cup-desc': 'Reduce disposable cup usage',
+        'bottle-title': 'Bring Water Bottle',
+        'bottle-desc': 'Reduce bottled water purchases',
+        'cooking-title': 'Cook at Home',
+        'cooking-desc': 'Reduce takeout packaging waste',
+        'waste-title': 'Reduce Food Waste',
+        'waste-desc': 'Avoid unnecessary food production',
+        'bag-title': 'Bring Eco Bag',
+        'bag-desc': 'Refuse plastic shopping bags',
+        'secondhand-title': 'Buy Second-hand Items',
+        'secondhand-desc': 'Extend product lifespan',
+        'repair-title': 'Repair Items',
+        'repair-desc': 'Repair instead of discard',
+        'recycle-title': 'Recycle Bottles/Cans',
+        'recycle-desc': 'Proper waste sorting',
+        'ac-title': 'No Air Conditioning',
+        'ac-desc': 'Use fans or natural ventilation',
+        'temp-title': 'Raise AC Temperature',
+        'temp-desc': 'Each degree saves ~10% energy',
+        'wash-title': 'Cold Water Washing',
+        'wash-desc': 'Reduce water heating energy',
+        'shower-title': 'Shorter Showers',
+        'shower-desc': 'Per minute reduced',
+        'unplug-title': 'Unplug Standby Devices',
+        'unplug-desc': 'Avoid standby power consumption',
+        'led-title': 'Use LED Lights',
+        'led-desc': 'LED vs traditional bulbs',
+        'print-title': 'Double-sided Printing',
+        'print-desc': 'Save paper usage',
+        'towel-title': 'Towel Instead of Tissues',
+        'towel-desc': 'Reusable option',
+        'digital-title': 'Digital Operations',
+        'digital-desc': 'Reduce paper documents'
+      }
+    };
+
+    let currentLanguage = 'en';
+
+    // Language switching function
+    function switchLanguage() {
+      currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
+      
+      // Update language button
+      const languageBtn = document.querySelector('.language-switch');
+      if (languageBtn) {
+        languageBtn.textContent = currentLanguage === 'zh' ? '🌍 English' : '🌍 中文';
+      }
+      
+      // Update all translatable elements
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[currentLanguage] && translations[currentLanguage][key]) {
+          element.textContent = translations[currentLanguage][key];
+        }
+      });
+    }
+
+    // ===== GAME FUNCTIONALITY =====
+    
+    // Toggle category visibility
+    function toggleCategory(categoryId) {
+      const content = document.getElementById(categoryId);
+      if (content) {
+        if (content.style.display === 'none' || content.style.display === '') {
+          content.style.display = 'block';
+        } else {
+          content.style.display = 'none';
+        }
+      }
+    }
+
+    // Calculate carbon reduction
+    function calculate() {
+      let totalCO2 = 0;
+      let checkedItems = 0;
+      
+      // Get all checked checkboxes
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      
+      checkboxes.forEach(checkbox => {
+        let value = parseFloat(checkbox.value);
+        let unit = checkbox.getAttribute('data-unit');
+        
+        // For actions that need user input, use default multiplier
+        let multiplier = 1;
+        if (unit === 'km') multiplier = 5;
+        if (unit === 'hours') multiplier = 2;
+        if (unit === 'minutes') multiplier = 5;
+        if (unit === 'sheets') multiplier = 10;
+        if (unit === 'bottles') multiplier = 2;
+        if (unit === 'portions') multiplier = 2;
+        
+        totalCO2 += value * multiplier;
+        checkedItems++;
+      });
+      
+      if (checkedItems === 0) {
+        alert(currentLanguage === 'zh' ? '請選擇至少一個環保行為！' : 'Please select at least one eco-action!');
+        return;
+      }
+      
+      // Calculate equivalents
+      const treeEquivalent = Math.round(totalCO2 / 22);
+      const leafCount = Math.round(totalCO2 * 10);
+      
+      // Update results
+      const totalCO2Element = document.getElementById('total-co2');
+      const treeElement = document.getElementById('tree-equivalent');
+      const leafElement = document.getElementById('leaf-count');
+      
+      if (totalCO2Element) totalCO2Element.textContent = totalCO2.toFixed(2);
+      if (treeElement) treeElement.textContent = treeEquivalent;
+      if (leafElement) leafElement.textContent = leafCount;
+      
+      // Show leaves animation
+      const leavesDisplay = document.getElementById('leaves-display');
+      if (leavesDisplay) {
+        leavesDisplay.innerHTML = '';
+        
+        // Add animated leaves
+        const maxLeaves = Math.min(leafCount, 20);
+        for (let i = 0; i < maxLeaves; i++) {
+          setTimeout(() => {
+            const leaf = document.createElement('span');
+            leaf.className = 'leaf';
+            leaf.textContent = '🍃';
+            leavesDisplay.appendChild(leaf);
+          }, i * 100);
+        }
+      }
+      
+      // Show result section
+      const result = document.getElementById('result');
+      if (result) {
+        result.classList.add('show');
+        result.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // ===== SOCIAL SHARING =====
+    
+    // Share results on social media
+    function shareResult(platform) {
+      const co2Element = document.getElementById('total-co2');
+      const treesElement = document.getElementById('tree-equivalent');
+      
+      if (!co2Element || !treesElement) return;
+      
+      const co2 = co2Element.textContent;
+      const trees = treesElement.textContent;
+      
+      const message = currentLanguage === 'zh' 
+        ? `我今天的環保行動減少了${co2}kg CO₂排放，相當於種植${trees}棵樹！🌱 #ESG減碳 #環保行動`
+        : `My eco-actions today reduced ${co2}kg CO₂ emissions, equivalent to planting ${trees} trees! 🌱 #ESGCarbonReduction #EcoAction`;
+      
+      const url = window.location.href;
+      
+      switch(platform) {
+        case 'facebook':
+          window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(message)}`);
+          break;
+        case 'twitter':
+          window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(url)}`);
+          break;
+        case 'line':
+          window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`);
+          break;
+      }
+    }
+
+    // Copy results to clipboard
+    function copyResult() {
+      const co2Element = document.getElementById('total-co2');
+      const treesElement = document.getElementById('tree-equivalent');
+      const leavesElement = document.getElementById('leaf-count');
+      
+      if (!co2Element || !treesElement || !leavesElement) return;
+      
+      const co2 = co2Element.textContent;
+      const trees = treesElement.textContent;
+      const leaves = leavesElement.textContent;
+      
+      const message = currentLanguage === 'zh' 
+        ? `我今天的環保行動減少了${co2}kg CO₂排放，相當於種植${trees}棵樹，獲得${leaves}片森林葉子！🌱 #ESG減碳 #環保行動`
+        : `My eco-actions today reduced ${co2}kg CO₂ emissions, equivalent to planting ${trees} trees, earning ${leaves} forest leaves! 🌱 #ESGCarbonReduction #EcoAction`;
+      
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(message).then(() => {
+          alert(currentLanguage === 'zh' ? '結果已複製到剪貼板！' : 'Result copied to clipboard!');
+        });
+      }
+    }
+
+    // ===== INITIALIZATION =====
+    
+    // Initialize the website when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Show first category by default
+      toggleCategory('transport');
+      
+      // Set initial language to English and update all elements
+      currentLanguage = 'en';
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[currentLanguage] && translations[currentLanguage][key]) {
+          element.textContent = translations[currentLanguage][key];
+        }
+      });
+      
+      // Update language button
+      const languageBtn = document.querySelector('.language-switch');
+      if (languageBtn) {
+        languageBtn.textContent = '🌍 中文';
+      }
+    });
+  </script>recycle-desc': '正確分類回收',
+        'ac-title': '不開冷氣',
+        'ac-desc': '使用風扇或自然通風',
+        'temp-title': '調高冷氣溫度',
+        'temp-desc': '每調高1度約省10%電力',
+        'wash-title': '用冷水洗衣',
+        'wash-desc': '減少加熱水的能耗',
+        'shower-title': '縮短淋浴時間',
+        'shower-desc': '每減少1分鐘',
+        'unplug-title': '拔掉待機電器',
+        'unplug-desc': '避免待機耗電',
+        'led-title': '使用LED燈具',
+        'led-desc': 'LED比傳統燈泡省電',
+        'print-title': '雙面列印',
+        'print-desc': '節省紙張使用',
+        'towel-title': '用毛巾代替紙巾',
+        'towel-desc': '可重複使用',
+        'digital-title': '電子化作業',
+        'digital-desc': '減少紙本文件'
+      },
+      'en': {
+        'specialized-esg': 'SPECIALIZED ESG',
+        'hero-title-line1': 'PRODUCT',
+        'hero-title-line2': 'SUSTAINABILITY',
+        'hero-title-line3': 'STRATEGY',
+        'hero-subtitle': 'Gamified Environmental Action Experience',
+        'hero-description': 'Record your environmental actions through interactive games, quantify carbon reduction contributions, and build a sustainable future together. Every small action is an important step in changing the world.',
+        'hero-cta': 'Start My Green Journey',
+        'problem-title': 'Environmental Challenges',
+        'problem-point1': 'Global carbon emissions continue to rise',
+        'problem-point2': 'Increasing ESG compliance pressure for companies',
+        'problem-point3': 'Growing consumer environmental awareness',
+        'problem-point4': 'Lack of effective personal behavior tracking tools',
+        'carbon-trends': 'Carbon Emission Trends',
+        'annual-growth': 'Annual Growth Rate',
+        'tons-co2': 'Tons CO₂/Year',
+        'solution-title': 'Solution',
+        'solution-subtitle': 'Gamified Environmental Behavior Tracking Platform',
+        'eco-types': 'Eco-Action Types',
+        'realtime': 'Real-time',
+        'carbon-calc': 'Carbon Calculation',
+        'social': 'Social',
+        'sharing': 'Sharing Features',
+        'multilang': 'Multi-language',
+        'support': 'Support',
+        'solution-point1': 'Five major categories: Transportation, Food, Shopping, Home, and Office',
+        'solution-point2': 'Scientific carbon footprint calculation formulas',
+        'solution-point3': 'Visual achievement display (Forest Leaf System)',
+        'impact-title': 'Expected Impact',
+        'impact-point1': 'Increase personal environmental awareness',
+        'impact-point2': 'Quantify corporate ESG contributions',
+        'impact-point3': 'Build sustainable behavioral habits',
+        'impact-point4': 'Promote social environmental culture',
+        'target-results': 'Target Results',
+        'active-users': 'Active Users',
+        'co2-reduction': 'kg CO₂ Reduction',
+        'try-now': 'Try Now',
+        'main-title': '🌱 ESG Carbon Forest Game',
+        'main-subtitle': 'Record your eco-actions and create a green future together',
+        'intro-title': '🎮 What eco-actions did you do today?',
+        'intro-desc': 'Select the eco-actions you actually did today, and the system will calculate your carbon reduction contribution and convert it into leaves in the forest!',
+        'transport-title': 'Transportation',
+        'food-title': 'Food & Lifestyle',
+        'shopping-title': 'Shopping & Consumption',
+        'home-title': 'Home Energy Saving',
+        'office-title': 'Office Eco-friendly',
+        'calculate-btn': 'Calculate My Eco Contribution',
+        'result-title': '🎉 Congratulations! You did amazing things for the planet today!',
+        'co2-label': 'CO₂ Reduction (kg)',
+        'tree-label': 'Equivalent Trees Planted',
+        'leaf-label': 'Forest Leaves Earned',
+        'share-title': 'Share Your Eco Achievement',
+        'share-desc': 'Let more people know about your eco actions!',
+        'copy-btn': 'Copy Result',
+        'walk-title': 'Walk Instead of Driving',
+        'walk-desc': 'Reduce car emissions per kilometer',
+        'bike-title': 'Bike Instead of Driving',
+        'bike-desc': 'Eco-friendly and healthy transportation',
+        'public-title': 'Use Public Transport',
+        'public-desc': 'Bus, metro, train, etc.',
+        'carpool-title': 'Carpool/Rideshare',
+        'carpool-desc': 'Share transportation with others',
+        'remote-title': 'Remote Work/Video Conference',
+        'remote-desc': 'Save commuting and office energy',
+        'stairs-title': 'Take Stairs Not Elevator',
+        'stairs-desc': 'Energy saving and exercise',
+        'no-beef-title': 'Skip Beef for One Meal',
+        'no-beef-desc': 'Beef has the highest carbon footprint',
+        'vegetarian-title': 'Vegetarian Meal',
+        'vegetarian-desc': 'Plant-based diet is more eco-friendly',
+        'cup-title': 'Bring Reusable Cup',
+        'cup-desc': 'Reduce disposable cup usage',
+        'bottle-title': 'Bring Water Bottle',
+        'bottle-desc': 'Reduce bottled water purchases',
+        'cooking-title': 'Cook at Home',
+        'cooking-desc': 'Reduce takeout packaging waste',
+        'waste-title': 'Reduce Food Waste',
+        'waste-desc': 'Avoid unnecessary food production',
+        'bag-title': 'Bring Eco Bag',
+        'bag-desc': 'Refuse plastic shopping bags',
+        'secondhand-title': 'Buy Second-hand Items',
+        'secondhand-desc': 'Extend product lifespan',
+        'repair-title': 'Repair Items',
+        'repair-desc': 'Repair instead of discard',
+        'recycle-title': 'Recycle Bottles/Cans',
+        'recycle-desc': 'Proper waste sorting',
+        'ac-title': 'No Air Conditioning',
+        'ac-desc': 'Use fans or natural ventilation',
+        'temp-title': 'Raise AC Temperature',
+        'temp-desc': 'Each degree saves ~10% energy',
+        'wash-title': 'Cold Water Washing',
+        'wash-desc': 'Reduce water heating energy',
+        'shower-title': 'Shorter Showers',
+        'shower-desc': 'Per minute reduced',
+        'unplug-title': 'Unplug Standby Devices',
+        'unplug-desc': 'Avoid standby power consumption',
+        'led-title': 'Use LED Lights',
+        'led-desc': 'LED vs traditional bulbs',
+        'print-title': 'Double-sided Printing',
+        'print-desc': 'Save paper usage',
+        'towel-title': 'Towel Instead of Tissues',
+        'towel-desc': 'Reusable option',
+        'digital-title': 'Digital Operations',
+        'digital-desc': 'Reduce paper documents'
+      }
+    };用風扇或自然通風',
         'temp-title': '調高冷氣溫度',
         'temp-desc': '每調高1度約省10%電力',
         'wash-title': '用冷水洗衣',
@@ -821,144 +1757,126 @@
       }
     };
 
-    // Global variable for current language
-    let currentLang = 'zh';
+    let currentLanguage = 'en';  // START WITH ENGLISH as default
 
     // Language switching function
     function switchLanguage() {
-      currentLang = currentLang === 'zh' ? 'en' : 'zh';
-      updateLanguage();
-    }
-
-    // Update all translatable elements
-    function updateLanguage() {
-      const elements = document.querySelectorAll('[data-translate]');
-      elements.forEach(element => {
+      currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
+      
+      // Update language button
+      const languageBtn = document.querySelector('.language-switch');
+      languageBtn.textContent = currentLanguage === 'zh' ? '🌍 English' : '🌍 中文';
+      
+      // Update all translatable elements
+      document.querySelectorAll('[data-translate]').forEach(element => {
         const key = element.getAttribute('data-translate');
-        if (translations[currentLang] && translations[currentLang][key]) {
-          element.textContent = translations[currentLang][key];
+        if (translations[currentLanguage][key]) {
+          element.textContent = translations[currentLanguage][key];
         }
       });
-      
-      // Update language switch button
-      document.querySelector('.language-switch').textContent = 
-        currentLang === 'zh' ? '🌍 English' : '🌍 中文';
-      
-      // Update page title
-      document.title = currentLang === 'zh' ? 
-        'ESG減碳森林遊戲 - 我的環保貢獻' : 
-        'ESG Carbon Forest Game - My Eco Contribution';
-      
-      // Update HTML lang attribute
-      document.documentElement.lang = currentLang === 'zh' ? 'zh-Hant' : 'en';
     }
 
+    // ===== GAME FUNCTIONALITY =====
+    
     // Toggle category visibility
     function toggleCategory(categoryId) {
       const content = document.getElementById(categoryId);
-      const isVisible = content.style.display === 'block';
-      
-      // Close all categories
-      document.querySelectorAll('.category-content').forEach(el => {
-        el.style.display = 'none';
-      });
-      
-      // Open current category if it was closed
-      if (!isVisible) {
+      if (content.style.display === 'none' || content.style.display === '') {
         content.style.display = 'block';
+      } else {
+        content.style.display = 'none';
       }
     }
 
-    // Calculate carbon footprint
+    // Calculate carbon reduction
     function calculate() {
-      const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
       let totalCO2 = 0;
-      let actionCount = 0;
+      let checkedItems = 0;
+      
+      // Get all checked checkboxes
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
       
       checkboxes.forEach(checkbox => {
-        const value = parseFloat(checkbox.value);
-        if (!isNaN(value)) {
-          totalCO2 += value;
-          actionCount++;
-        }
+        let value = parseFloat(checkbox.value);
+        let unit = checkbox.getAttribute('data-unit');
+        
+        // For actions that need user input (like km, hours), use default multiplier
+        // In a real app, you'd want input fields for these
+        let multiplier = 1;
+        if (unit === 'km') multiplier = 5; // Assume 5km
+        if (unit === 'hours') multiplier = 2; // Assume 2 hours
+        if (unit === 'minutes') multiplier = 5; // Assume 5 minutes
+        if (unit === 'sheets') multiplier = 10; // Assume 10 sheets
+        if (unit === 'bottles') multiplier = 2; // Assume 2 bottles
+        if (unit === 'portions') multiplier = 2; // Assume 2 portions
+        if (unit === 'items') multiplier = 1; // 1 item
+        if (unit === 'times') multiplier = 1; // 1 time
+        if (unit === 'meals') multiplier = 1; // 1 meal
+        if (unit === 'days') multiplier = 1; // 1 day
+        
+        totalCO2 += value * multiplier;
+        checkedItems++;
       });
       
-      if (actionCount === 0) {
-        alert(currentLang === 'zh' ? 
-          '請至少選擇一個環保行為！' : 
-          'Please select at least one eco-action!');
+      if (checkedItems === 0) {
+        alert(currentLanguage === 'zh' ? '請選擇至少一個環保行為！' : 'Please select at least one eco-action!');
         return;
       }
       
-      // Calculate tree equivalent (assuming one tree absorbs 22kg CO₂ per year)
-      const treeEquivalent = (totalCO2 / 22 * 365).toFixed(1);
+      // Calculate equivalents
+      const treeEquivalent = Math.round(totalCO2 / 22); // 1 tree absorbs ~22kg CO2 per year
+      const leafCount = Math.round(totalCO2 * 10); // 10 leaves per kg CO2
       
-      // Calculate leaf count (0.5kg CO₂ = 1 leaf)
-      const leafCount = Math.floor(totalCO2 / 0.5);
-      
-      // Update result display
+      // Update results
       document.getElementById('total-co2').textContent = totalCO2.toFixed(2);
       document.getElementById('tree-equivalent').textContent = treeEquivalent;
       document.getElementById('leaf-count').textContent = leafCount;
       
-      // Show leaf animation
-      showLeaves(leafCount);
-      
-      // Show result section
-      const resultDiv = document.getElementById('result');
-      resultDiv.classList.add('show');
-      resultDiv.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Show animated leaves
-    function showLeaves(count) {
+      // Show leaves animation
       const leavesDisplay = document.getElementById('leaves-display');
       leavesDisplay.innerHTML = '';
       
-      const maxLeaves = Math.min(count, 20); // Limit display count
-      
+      // Add animated leaves (max 20 for performance)
+      const maxLeaves = Math.min(leafCount, 20);
       for (let i = 0; i < maxLeaves; i++) {
         setTimeout(() => {
           const leaf = document.createElement('span');
           leaf.className = 'leaf';
           leaf.textContent = '🍃';
-          leaf.style.animationDelay = `${i * 0.1}s`;
           leavesDisplay.appendChild(leaf);
         }, i * 100);
       }
       
-      if (count > 20) {
-        setTimeout(() => {
-          const moreText = document.createElement('div');
-          moreText.innerHTML = currentLang === 'zh' ? 
-            `<p>還有 ${count - 20} 片葉子！🌿</p>` :
-            `<p>Plus ${count - 20} more leaves! 🌿</p>`;
-          moreText.style.marginTop = '10px';
-          moreText.style.fontWeight = 'bold';
-          moreText.style.color = '#4CAF50';
-          leavesDisplay.appendChild(moreText);
-        }, 2000);
-      }
+      // Show result section
+      const result = document.getElementById('result');
+      result.classList.add('show');
+      result.scrollIntoView({ behavior: 'smooth' });
     }
 
+    // ===== SOCIAL SHARING =====
+    
     // Share results on social media
     function shareResult(platform) {
       const co2 = document.getElementById('total-co2').textContent;
       const trees = document.getElementById('tree-equivalent').textContent;
       const leaves = document.getElementById('leaf-count').textContent;
       
-      const message = currentLang === 'zh' ? 
-        `我今天透過環保行動減少了${co2}kg CO₂排放，相當於種植${trees}棵樹，獲得${leaves}片森林葉子！一起加入ESG減碳森林遊戲吧！🌱` :
-        `I reduced ${co2}kg CO₂ emissions today through eco-actions, equivalent to planting ${trees} trees and earning ${leaves} forest leaves! Join the ESG Carbon Forest Game! 🌱`;
+      const message = currentLanguage === 'zh' 
+        ? `我今天的環保行動減少了${co2}kg CO₂排放，相當於種植${trees}棵樹！🌱 #ESG減碳 #環保行動`
+        : `My eco-actions today reduced ${co2}kg CO₂ emissions, equivalent to planting ${trees} trees! 🌱 #ESGCarbonReduction #EcoAction`;
       
-      const urls = {
-        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(message)}`,
-        twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(window.location.href)}`,
-        line: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(message)}`
-      };
+      const url = window.location.href;
       
-      if (urls[platform]) {
-        window.open(urls[platform], '_blank', 'width=600,height=400');
+      switch(platform) {
+        case 'facebook':
+          window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(message)}`);
+          break;
+        case 'twitter':
+          window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(url)}`);
+          break;
+        case 'line':
+          window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`);
+          break;
       }
     }
 
@@ -968,33 +1886,34 @@
       const trees = document.getElementById('tree-equivalent').textContent;
       const leaves = document.getElementById('leaf-count').textContent;
       
-      const message = currentLang === 'zh' ? 
-        `🌱 我的環保成果報告 🌱\n減少CO₂排放：${co2}kg\n相當於種植樹木：${trees}棵\n獲得森林葉子：${leaves}片\n\n一起加入ESG減碳森林遊戲！` :
-        `🌱 My Eco Achievement Report 🌱\nCO₂ Reduction: ${co2}kg\nEquivalent Trees: ${trees}\nForest Leaves: ${leaves}\n\nJoin the ESG Carbon Forest Game!`;
+      const message = currentLanguage === 'zh' 
+        ? `我今天的環保行動減少了${co2}kg CO₂排放，相當於種植${trees}棵樹，獲得${leaves}片森林葉子！🌱 #ESG減碳 #環保行動`
+        : `My eco-actions today reduced ${co2}kg CO₂ emissions, equivalent to planting ${trees} trees, earning ${leaves} forest leaves! 🌱 #ESGCarbonReduction #EcoAction`;
       
       navigator.clipboard.writeText(message).then(() => {
-        alert(currentLang === 'zh' ? '結果已複製到剪貼簿！' : 'Result copied to clipboard!');
-      }).catch(() => {
-        // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = message;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        alert(currentLang === 'zh' ? '結果已複製到剪貼簿！' : 'Result copied to clipboard!');
+        alert(currentLanguage === 'zh' ? '結果已複製到剪貼板！' : 'Result copied to clipboard!');
       });
     }
 
-    // Initialize page when DOM is loaded
+    // ===== INITIALIZATION =====
+    
+    // Initialize the website when page loads
     document.addEventListener('DOMContentLoaded', function() {
-      // Hide all category content initially
-      document.querySelectorAll('.category-content').forEach(el => {
-        el.style.display = 'none';
+      // Show first category by default
+      toggleCategory('transport');
+      
+      // Set initial language to English and update all elements
+      currentLanguage = 'en';
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[currentLanguage][key]) {
+          element.textContent = translations[currentLanguage][key];
+        }
       });
       
-      // Show first category by default
-      document.getElementById('transport').style.display = 'block';
+      // Update language button
+      const languageBtn = document.querySelector('.language-switch');
+      languageBtn.textContent = '🌍 中文';
     });
   </script>
 </body>
