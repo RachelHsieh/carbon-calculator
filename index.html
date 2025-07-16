@@ -669,7 +669,7 @@
   </div>
 
   <script>
-    // Enhanced translations object with all text elements
+    // Complete translations object
     const translations = {
       'zh': {
         'main-title': '🌱 ESG減碳森林遊戲',
@@ -818,4 +818,184 @@
         'towel-desc': 'Reusable option',
         'digital-title': 'Digital Operations',
         'digital-desc': 'Reduce paper documents'
-        '
+      }
+    };
+
+    // Global variable for current language
+    let currentLang = 'zh';
+
+    // Language switching function
+    function switchLanguage() {
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      updateLanguage();
+    }
+
+    // Update all translatable elements
+    function updateLanguage() {
+      const elements = document.querySelectorAll('[data-translate]');
+      elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[currentLang] && translations[currentLang][key]) {
+          element.textContent = translations[currentLang][key];
+        }
+      });
+      
+      // Update language switch button
+      document.querySelector('.language-switch').textContent = 
+        currentLang === 'zh' ? '🌍 English' : '🌍 中文';
+      
+      // Update page title
+      document.title = currentLang === 'zh' ? 
+        'ESG減碳森林遊戲 - 我的環保貢獻' : 
+        'ESG Carbon Forest Game - My Eco Contribution';
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = currentLang === 'zh' ? 'zh-Hant' : 'en';
+    }
+
+    // Toggle category visibility
+    function toggleCategory(categoryId) {
+      const content = document.getElementById(categoryId);
+      const isVisible = content.style.display === 'block';
+      
+      // Close all categories
+      document.querySelectorAll('.category-content').forEach(el => {
+        el.style.display = 'none';
+      });
+      
+      // Open current category if it was closed
+      if (!isVisible) {
+        content.style.display = 'block';
+      }
+    }
+
+    // Calculate carbon footprint
+    function calculate() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      let totalCO2 = 0;
+      let actionCount = 0;
+      
+      checkboxes.forEach(checkbox => {
+        const value = parseFloat(checkbox.value);
+        if (!isNaN(value)) {
+          totalCO2 += value;
+          actionCount++;
+        }
+      });
+      
+      if (actionCount === 0) {
+        alert(currentLang === 'zh' ? 
+          '請至少選擇一個環保行為！' : 
+          'Please select at least one eco-action!');
+        return;
+      }
+      
+      // Calculate tree equivalent (assuming one tree absorbs 22kg CO₂ per year)
+      const treeEquivalent = (totalCO2 / 22 * 365).toFixed(1);
+      
+      // Calculate leaf count (0.5kg CO₂ = 1 leaf)
+      const leafCount = Math.floor(totalCO2 / 0.5);
+      
+      // Update result display
+      document.getElementById('total-co2').textContent = totalCO2.toFixed(2);
+      document.getElementById('tree-equivalent').textContent = treeEquivalent;
+      document.getElementById('leaf-count').textContent = leafCount;
+      
+      // Show leaf animation
+      showLeaves(leafCount);
+      
+      // Show result section
+      const resultDiv = document.getElementById('result');
+      resultDiv.classList.add('show');
+      resultDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Show animated leaves
+    function showLeaves(count) {
+      const leavesDisplay = document.getElementById('leaves-display');
+      leavesDisplay.innerHTML = '';
+      
+      const maxLeaves = Math.min(count, 20); // Limit display count
+      
+      for (let i = 0; i < maxLeaves; i++) {
+        setTimeout(() => {
+          const leaf = document.createElement('span');
+          leaf.className = 'leaf';
+          leaf.textContent = '🍃';
+          leaf.style.animationDelay = `${i * 0.1}s`;
+          leavesDisplay.appendChild(leaf);
+        }, i * 100);
+      }
+      
+      if (count > 20) {
+        setTimeout(() => {
+          const moreText = document.createElement('div');
+          moreText.innerHTML = currentLang === 'zh' ? 
+            `<p>還有 ${count - 20} 片葉子！🌿</p>` :
+            `<p>Plus ${count - 20} more leaves! 🌿</p>`;
+          moreText.style.marginTop = '10px';
+          moreText.style.fontWeight = 'bold';
+          moreText.style.color = '#4CAF50';
+          leavesDisplay.appendChild(moreText);
+        }, 2000);
+      }
+    }
+
+    // Share results on social media
+    function shareResult(platform) {
+      const co2 = document.getElementById('total-co2').textContent;
+      const trees = document.getElementById('tree-equivalent').textContent;
+      const leaves = document.getElementById('leaf-count').textContent;
+      
+      const message = currentLang === 'zh' ? 
+        `我今天透過環保行動減少了${co2}kg CO₂排放，相當於種植${trees}棵樹，獲得${leaves}片森林葉子！一起加入ESG減碳森林遊戲吧！🌱` :
+        `I reduced ${co2}kg CO₂ emissions today through eco-actions, equivalent to planting ${trees} trees and earning ${leaves} forest leaves! Join the ESG Carbon Forest Game! 🌱`;
+      
+      const urls = {
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(message)}`,
+        twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(window.location.href)}`,
+        line: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(message)}`
+      };
+      
+      if (urls[platform]) {
+        window.open(urls[platform], '_blank', 'width=600,height=400');
+      }
+    }
+
+    // Copy results to clipboard
+    function copyResult() {
+      const co2 = document.getElementById('total-co2').textContent;
+      const trees = document.getElementById('tree-equivalent').textContent;
+      const leaves = document.getElementById('leaf-count').textContent;
+      
+      const message = currentLang === 'zh' ? 
+        `🌱 我的環保成果報告 🌱\n減少CO₂排放：${co2}kg\n相當於種植樹木：${trees}棵\n獲得森林葉子：${leaves}片\n\n一起加入ESG減碳森林遊戲！` :
+        `🌱 My Eco Achievement Report 🌱\nCO₂ Reduction: ${co2}kg\nEquivalent Trees: ${trees}\nForest Leaves: ${leaves}\n\nJoin the ESG Carbon Forest Game!`;
+      
+      navigator.clipboard.writeText(message).then(() => {
+        alert(currentLang === 'zh' ? '結果已複製到剪貼簿！' : 'Result copied to clipboard!');
+      }).catch(() => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = message;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert(currentLang === 'zh' ? '結果已複製到剪貼簿！' : 'Result copied to clipboard!');
+      });
+    }
+
+    // Initialize page when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Hide all category content initially
+      document.querySelectorAll('.category-content').forEach(el => {
+        el.style.display = 'none';
+      });
+      
+      // Show first category by default
+      document.getElementById('transport').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
