@@ -576,6 +576,11 @@
         font-size: 1rem;
       }
       
+      .ppt-content-slide {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
       .container {
         margin: 10px;
         border-radius: 10px;
@@ -661,8 +666,8 @@
       </div>
     </div>
 
-    <!-- Slide 2: Carbon Footprint -->
-    <div class="hero-slide image-slide" id="slide-1" style="display: none; background-image: url('https://github.com/RachelHsieh/esg-carbon-forest-game/raw/main/slide1.jpg');">
+    <!-- Slide 2: Carbon Footprint Chart -->
+    <div class="hero-slide image-slide" id="slide-1" style="display: none; background-image: url('https://raw.githubusercontent.com/RachelHsieh/esg-carbon-forest-game/main/slide1.jpg');">
       <h2 class="image-slide-title">CARBON FOOTPRINT<br>ANALYSIS</h2>
     </div>
 
@@ -702,7 +707,7 @@
     </div>
 
     <!-- Slide 4: Break Barriers -->
-    <div class="hero-slide image-slide" id="slide-3" style="display: none; background-image: url('https://github.com/RachelHsieh/esg-carbon-forest-game/raw/main/BB.jpg');">
+    <div class="hero-slide image-slide" id="slide-3" style="display: none; background-image: url('https://raw.githubusercontent.com/RachelHsieh/esg-carbon-forest-game/main/BB.jpg');">
       <h2 class="image-slide-title">BREAK BARRIERS<br>PERFORMANCE<br>INNOVATION</h2>
     </div>
   </div>
@@ -840,4 +845,421 @@
                 <div class="action-title">Reduce Food Waste</div>
                 <div class="action-desc">Avoid unnecessary food production</div>
               </div>
-              <div
+              <div class="co2-value">-0.2kg CO₂/100g</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Shopping & Consumption -->
+        <div class="category">
+          <div class="category-header" onclick="toggleCategory('shopping')">
+            🛍️ Shopping & Consumption
+          </div>
+          <div class="category-content" id="shopping">
+            <div class="action-item">
+              <input type="checkbox" value="0.1" data-unit="times" id="eco-bag">
+              <div class="action-info">
+                <div class="action-title">Bring Eco Bag</div>
+                <div class="action-desc">Refuse plastic shopping bags</div>
+              </div>
+              <div class="co2-value">-0.1kg CO₂/use</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="5" data-unit="items" id="second-hand">
+              <div class="action-info">
+                <div class="action-title">Buy Second-hand Items</div>
+                <div class="action-desc">Extend product lifespan</div>
+              </div>
+              <div class="co2-value">-5kg CO₂/item</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="2" data-unit="times" id="repair">
+              <div class="action-info">
+                <div class="action-title">Repair Items</div>
+                <div class="action-desc">Repair instead of discard</div>
+              </div>
+              <div class="co2-value">-2kg CO₂/repair</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.02" data-unit="items" id="recycle">
+              <div class="action-info">
+                <div class="action-title">Recycle Bottles/Cans</div>
+                <div class="action-desc">Proper waste sorting</div>
+              </div>
+              <div class="co2-value">-0.02kg CO₂/item</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Home Energy Saving -->
+        <div class="category">
+          <div class="category-header" onclick="toggleCategory('home')">
+            🏠 Home Energy Saving
+          </div>
+          <div class="category-content" id="home">
+            <div class="action-item">
+              <input type="checkbox" value="0.5" data-unit="hours" id="no-ac">
+              <div class="action-info">
+                <div class="action-title">No Air Conditioning</div>
+                <div class="action-desc">Use fans or natural ventilation</div>
+              </div>
+              <div class="co2-value">-0.5kg CO₂/hour</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.1" data-unit="hours" id="ac-temp">
+              <div class="action-info">
+                <div class="action-title">Raise AC Temperature</div>
+                <div class="action-desc">Each degree saves ~10% energy</div>
+              </div>
+              <div class="co2-value">-0.1kg CO₂/hour</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.6" data-unit="times" id="cold-wash">
+              <div class="action-info">
+                <div class="action-title">Cold Water Washing</div>
+                <div class="action-desc">Reduce water heating energy</div>
+              </div>
+              <div class="co2-value">-0.6kg CO₂/load</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.2" data-unit="minutes" id="short-shower">
+              <div class="action-info">
+                <div class="action-title">Shorter Showers</div>
+                <div class="action-desc">Per minute reduced</div>
+              </div>
+              <div class="co2-value">-0.2kg CO₂/minute</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.1" data-unit="days" id="unplug">
+              <div class="action-info">
+                <div class="action-title">Unplug Standby Devices</div>
+                <div class="action-desc">Avoid standby power consumption</div>
+              </div>
+              <div class="co2-value">-0.1kg CO₂/day</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.08" data-unit="hours" id="led">
+              <div class="action-info">
+                <div class="action-title">Use LED Lights</div>
+                <div class="action-desc">LED vs traditional bulbs</div>
+              </div>
+              <div class="co2-value">-0.08kg CO₂/hour</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Office Eco-friendly -->
+        <div class="category">
+          <div class="category-header" onclick="toggleCategory('office')">
+            💼 Office Eco-friendly
+          </div>
+          <div class="category-content" id="office">
+            <div class="action-item">
+              <input type="checkbox" value="0.005" data-unit="sheets" id="double-print">
+              <div class="action-info">
+                <div class="action-title">Double-sided Printing</div>
+                <div class="action-desc">Save paper usage</div>
+              </div>
+              <div class="co2-value">-0.005kg CO₂/sheet</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.01" data-unit="times" id="towel">
+              <div class="action-info">
+                <div class="action-title">Towel Instead of Tissues</div>
+                <div class="action-desc">Reusable option</div>
+              </div>
+              <div class="co2-value">-0.01kg CO₂/use</div>
+            </div>
+            
+            <div class="action-item">
+              <input type="checkbox" value="0.05" data-unit="times" id="digital">
+              <div class="action-info">
+                <div class="action-title">Digital Operations</div>
+                <div class="action-desc">Reduce paper documents</div>
+              </div>
+              <div class="co2-value">-0.05kg CO₂/task</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="calculate-section">
+          <button class="calculate-btn" onclick="calculate()">
+            🧮 Calculate My Eco Contribution
+          </button>
+        </div>
+        
+        <div class="result" id="result">
+          <h2>🎉 Congratulations! You did amazing things for the planet today!</h2>
+          
+          <div class="result-stats">
+            <div class="stat-card">
+              <div class="stat-number" id="total-co2">0</div>
+              <div class="stat-label">CO₂ Reduction (kg)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="tree-equivalent">0</div>
+              <div class="stat-label">Equivalent Trees Planted</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="leaf-count">0</div>
+              <div class="stat-label">Forest Leaves Earned</div>
+            </div>
+          </div>
+          
+          <div class="leaves-display" id="leaves-display"></div>
+          
+          <div class="share-section">
+            <h3>Share Your Eco Achievement</h3>
+            <p>Let more people know about your eco actions!</p>
+            <button class="share-btn" onclick="shareResult('facebook')">📘 Facebook</button>
+            <button class="share-btn" onclick="shareResult('twitter')">🐦 Twitter</button>
+            <button class="share-btn" onclick="shareResult('line')">💬 LINE</button>
+            <button class="share-btn" onclick="copyResult()">📋 Copy Result</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== SLIDE NAVIGATION FUNCTIONS =====
+    
+    // Variables for slide management
+    let currentSlide = 0;
+    const totalSlides = 4;
+
+    // Function to switch between slides
+    function goToSlide(slideIndex) {
+      // Hide current slide
+      const currentSlideElement = document.getElementById('slide-' + currentSlide);
+      if (currentSlideElement) {
+        currentSlideElement.style.display = 'none';
+      }
+      
+      // Remove active class from current dot
+      const dots = document.querySelectorAll('.slide-nav-dot');
+      if (dots[currentSlide]) {
+        dots[currentSlide].classList.remove('active');
+      }
+      
+      // Show new slide
+      currentSlide = slideIndex;
+      const newSlideElement = document.getElementById('slide-' + currentSlide);
+      if (newSlideElement) {
+        newSlideElement.style.display = 'flex';
+      }
+      
+      // Add active class to new dot
+      if (dots[currentSlide]) {
+        dots[currentSlide].classList.add('active');
+      }
+    }
+
+    // Smooth scroll to game section
+    function scrollToGame() {
+      const gameElement = document.getElementById('game');
+      if (gameElement) {
+        gameElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Keyboard navigation for slides
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowRight' || event.key === ' ') {
+        const nextSlide = (currentSlide + 1) % totalSlides;
+        goToSlide(nextSlide);
+      } else if (event.key === 'ArrowLeft') {
+        const prevSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        goToSlide(prevSlide);
+      }
+    });
+
+    // ===== GAME FUNCTIONALITY =====
+    
+    // Toggle category visibility
+    function toggleCategory(categoryId) {
+      const content = document.getElementById(categoryId);
+      if (content) {
+        if (content.style.display === 'none' || content.style.display === '') {
+          content.style.display = 'block';
+        } else {
+          content.style.display = 'none';
+        }
+      }
+    }
+
+    // Calculate carbon reduction with fixed logic
+    function calculate() {
+      let totalCO2 = 0;
+      let checkedItems = 0;
+      
+      // Get all checked checkboxes
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      
+      checkboxes.forEach(checkbox => {
+        const value = parseFloat(checkbox.value);
+        const unit = checkbox.getAttribute('data-unit');
+        
+        // Apply realistic multipliers based on unit type
+        let finalValue = value;
+        
+        switch(unit) {
+          case 'km':
+            finalValue = value * 10; // Assume 10km average
+            break;
+          case 'hours':
+            finalValue = value * 8; // Assume 8 hours
+            break;
+          case 'minutes':
+            finalValue = value * 10; // Assume 10 minutes saved
+            break;
+          case 'sheets':
+            finalValue = value * 20; // Assume 20 sheets
+            break;
+          case 'bottles':
+            finalValue = value * 3; // Assume 3 bottles
+            break;
+          case 'portions':
+            finalValue = value * 2; // Assume 2 portions
+            break;
+          case 'items':
+            finalValue = value * 1; // 1 item
+            break;
+          case 'times':
+            finalValue = value * 1; // 1 time
+            break;
+          case 'meals':
+            finalValue = value * 1; // 1 meal
+            break;
+          case 'days':
+            finalValue = value * 1; // 1 day
+            break;
+          default:
+            finalValue = value;
+        }
+        
+        totalCO2 += finalValue;
+        checkedItems++;
+      });
+      
+      if (checkedItems === 0) {
+        alert('Please select at least one eco-action!');
+        return;
+      }
+      
+      // Calculate equivalents
+      const treeEquivalent = Math.round(totalCO2 / 22); // 1 tree absorbs ~22kg CO2 per year
+      const leafCount = Math.round(totalCO2 * 10); // 10 leaves per kg CO2
+      
+      // Update results
+      const totalCO2Element = document.getElementById('total-co2');
+      const treeElement = document.getElementById('tree-equivalent');
+      const leafElement = document.getElementById('leaf-count');
+      
+      if (totalCO2Element) totalCO2Element.textContent = totalCO2.toFixed(2);
+      if (treeElement) treeElement.textContent = treeEquivalent;
+      if (leafElement) leafElement.textContent = leafCount;
+      
+      // Show leaves animation
+      const leavesDisplay = document.getElementById('leaves-display');
+      if (leavesDisplay) {
+        leavesDisplay.innerHTML = '';
+        
+        // Add animated leaves (max 20 for performance)
+        const maxLeaves = Math.min(leafCount, 20);
+        for (let i = 0; i < maxLeaves; i++) {
+          setTimeout(() => {
+            const leaf = document.createElement('span');
+            leaf.className = 'leaf';
+            leaf.textContent = '🍃';
+            leavesDisplay.appendChild(leaf);
+          }, i * 100);
+        }
+      }
+      
+      // Show result section
+      const result = document.getElementById('result');
+      if (result) {
+        result.classList.add('show');
+        result.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // ===== SOCIAL SHARING =====
+    
+    // Share results on social media
+    function shareResult(platform) {
+      const co2Element = document.getElementById('total-co2');
+      const treesElement = document.getElementById('tree-equivalent');
+      
+      if (!co2Element || !treesElement) return;
+      
+      const co2 = co2Element.textContent;
+      const trees = treesElement.textContent;
+      
+      const message = `My eco-actions today reduced ${co2}kg CO₂ emissions, equivalent to planting ${trees} trees! 🌱 #ESGCarbonReduction #EcoAction #Specialized`;
+      
+      const url = window.location.href;
+      
+      switch(platform) {
+        case 'facebook':
+          window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(message)}`);
+          break;
+        case 'twitter':
+          window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(url)}`);
+          break;
+        case 'line':
+          window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`);
+          break;
+      }
+    }
+
+    // Copy results to clipboard
+    function copyResult() {
+      const co2Element = document.getElementById('total-co2');
+      const treesElement = document.getElementById('tree-equivalent');
+      const leavesElement = document.getElementById('leaf-count');
+      
+      if (!co2Element || !treesElement || !leavesElement) return;
+      
+      const co2 = co2Element.textContent;
+      const trees = treesElement.textContent;
+      const leaves = leavesElement.textContent;
+      
+      const message = `My eco-actions today reduced ${co2}kg CO₂ emissions, equivalent to planting ${trees} trees, earning ${leaves} forest leaves! 🌱 #ESGCarbonReduction #EcoAction #Specialized`;
+      
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(message).then(() => {
+          alert('Result copied to clipboard!');
+        });
+      } else {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = message;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Result copied to clipboard!');
+      }
+    }
+
+    // ===== INITIALIZATION =====
+    
+    // Initialize the website when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Show first category by default
+      toggleCategory('transport');
+    });
+  </script>
+</body>
+</html>
