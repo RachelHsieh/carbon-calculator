@@ -165,6 +165,13 @@
         opacity: 0.9;
       }
 
+      .slide-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
       /* Image slide styling */
       .image-slide {
         height: 100vh;
@@ -745,12 +752,14 @@
 
       <!-- Slide 2: Carbon Footprint Chart -->
       <div class="hero-slide" id="slide-1" style="display: none">
-        <h2 class="slide-title">CARBON FOOTPRINT ANALYSIS</h2>
-        <img
-          src="https://raw.githubusercontent.com/RachelHsieh/esg-carbon-forest-game/main/slide%201.jpg"
-          alt="Carbon Footprint Analysis Chart"
-          class="slide-image"
-        />
+        <div class="slide-content">
+          <h2 class="slide-title">CARBON FOOTPRINT ANALYSIS</h2>
+          <img
+            src="https://raw.githubusercontent.com/RachelHsieh/esg-carbon-forest-game/main/slide%201.jpg"
+            alt="Carbon Footprint Analysis Chart"
+            class="slide-image"
+          />
+        </div>
       </div>
 
       <!-- Slide 3: Product Impact Analysis -->
@@ -801,10 +810,13 @@
 
       <!-- Slide 4: Break Barriers -->
       <div class="hero-slide" id="slide-3" style="display: none">
-        <img
-          src="https://raw.githubusercontent.com/RachelHsieh/esg-carbon-forest-game/main/BB.jpg"
-          class="slide-image"
-        />
+        <div class="slide-content">
+          <img
+            src="https://raw.githubusercontent.com/RachelHsieh/esg-carbon-forest-game/main/BB.jpg"
+            alt="Break Barriers"
+            class="slide-image"
+          />
+        </div>
       </div>
     </div>
 
@@ -922,7 +934,7 @@
               🍽️ Food & Lifestyle
             </div>
             <div class="category-content" id="food">
-              <div class="action-item">
+                              <div class="action-item">
                 <input
                   type="checkbox"
                   value="4"
@@ -1345,113 +1357,114 @@
 
       // Calculate carbon reduction with fixed logic
       function calculate() {
-  let totalCO2 = 0;
-  let checkedItems = 0;
+        let totalCO2 = 0;
+        let checkedItems = 0;
 
-  // Get all checked checkboxes
-  const checkboxes = document.querySelectorAll(
-    'input[type="checkbox"]:checked'
-  );
+        // Get all checked checkboxes
+        const checkboxes = document.querySelectorAll(
+          'input[type="checkbox"]:checked'
+        );
 
-  checkboxes.forEach((checkbox) => {
-    const value = parseFloat(checkbox.value);
-    const unit = checkbox.getAttribute("data-unit");
+        checkboxes.forEach((checkbox) => {
+          const value = parseFloat(checkbox.value);
+          const unit = checkbox.getAttribute("data-unit");
 
-    // Apply realistic multipliers based on unit type
-    let finalValue = value;
+          // Apply realistic multipliers based on unit type
+          let finalValue = value;
 
-    switch (unit) {
-      case "km":
-        finalValue = value * 10; // Assume 10km average
-        break;
-      case "hours":
-        finalValue = value * 8; // Assume 8 hours
-        break;
-      case "minutes":
-        finalValue = value * 10; // Assume 10 minutes saved
-        break;
-      case "sheets":
-        finalValue = value * 20; // Assume 20 sheets
-        break;
-      case "bottles":
-        finalValue = value * 3; // Assume 3 bottles
-        break;
-      case "portions":
-        finalValue = value * 2; // Assume 2 portions
-        break;
-      case "items":
-        finalValue = value * 1; // 1 item
-        break;
-      case "times":
-        finalValue = value * 1; // 1 time
-        break;
-      case "meals":
-        finalValue = value * 1; // 1 meal
-        break;
-      case "days":
-        finalValue = value * 1; // 1 day
-        break;
-      default:
-        finalValue = value;
-    }
+          switch (unit) {
+            case "km":
+              finalValue = value * 10; // Assume 10km average
+              break;
+            case "hours":
+              finalValue = value * 8; // Assume 8 hours
+              break;
+            case "minutes":
+              finalValue = value * 10; // Assume 10 minutes saved
+              break;
+            case "sheets":
+              finalValue = value * 20; // Assume 20 sheets
+              break;
+            case "bottles":
+              finalValue = value * 3; // Assume 3 bottles
+              break;
+            case "portions":
+              finalValue = value * 2; // Assume 2 portions
+              break;
+            case "items":
+              finalValue = value * 1; // 1 item
+              break;
+            case "times":
+              finalValue = value * 1; // 1 time
+              break;
+            case "meals":
+              finalValue = value * 1; // 1 meal
+              break;
+            case "days":
+              finalValue = value * 1; // 1 day
+              break;
+            default:
+              finalValue = value;
+          }
 
-    totalCO2 += finalValue;
-    checkedItems++;
-  });
+          totalCO2 += finalValue;
+          checkedItems++;
+        });
 
-  if (checkedItems === 0) {
-    alert("Please select at least one eco-action!");
-    return;
-  }
+        if (checkedItems === 0) {
+          alert("Please select at least one eco-action!");
+          return;
+        }
 
-  // Calculate equivalents
-  // FIXED: Remove duplicate declaration and syntax error
-  const treeEquivalent = Math.round((totalCO2 / 22) * 10) / 10; // 1 tree absorbs ~22kg CO2 per year
-  
-  // FIXED: Limited leaf count to 1-5 range based on CO2 reduction
-  let leafCount;
-  if (totalCO2 < 1) {
-    leafCount = 1; // Minimum 1 leaf for any eco action
-  } else if (totalCO2 < 3) {
-    leafCount = 2;
-  } else if (totalCO2 < 6) {
-    leafCount = 3;
-  } else if (totalCO2 < 10) {
-    leafCount = 4;
-  } else {
-    leafCount = 5; // Maximum 5 leaves
-  }
+        // Calculate equivalents
+        const treeEquivalent = Math.round((totalCO2 / 22) * 10) / 10; // 1 tree absorbs ~22kg CO2 per year
+        
+        // Limited leaf count to 1-5 range based on CO2 reduction
+        let leafCount;
+        if (totalCO2 < 1) {
+          leafCount = 1; // Minimum 1 leaf for any eco action
+        } else if (totalCO2 < 3) {
+          leafCount = 2;
+        } else if (totalCO2 < 6) {
+          leafCount = 3;
+        } else if (totalCO2 < 10) {
+          leafCount = 4;
+        } else {
+          leafCount = 5; // Maximum 5 leaves
+        }
 
-  // Update results
-  const totalCO2Element = document.getElementById("total-co2");
-  const treeElement = document.getElementById("tree-equivalent");
-  const leafElement = document.getElementById("leaf-count");
+        // Update results
+        const totalCO2Element = document.getElementById("total-co2");
+        const treeElement = document.getElementById("tree-equivalent");
+        const leafElement = document.getElementById("leaf-count");
 
-  if (totalCO2Element) totalCO2Element.textContent = totalCO2.toFixed(2);
-  if (treeElement) treeElement.textContent = treeEquivalent.toFixed(1);
-  if (leafElement) leafElement.textContent = leafCount;
+        if (totalCO2Element) totalCO2Element.textContent = totalCO2.toFixed(2);
+        if (treeElement) treeElement.textContent = treeEquivalent.toFixed(1);
+        if (leafElement) leafElement.textContent = leafCount;
 
-  // Show leaves animation
-  const leavesDisplay = document.getElementById("leaves-display");
-  if (leavesDisplay) {
-    leavesDisplay.innerHTML = "";
+        // Show leaves animation
+        const leavesDisplay = document.getElementById("leaves-display");
+        if (leavesDisplay) {
+          leavesDisplay.innerHTML = "";
 
-    // Add animated leaves (now limited to 1-5)
-    for (let i = 0; i < leafCount; i++) {
-      setTimeout(() => {
-        const leaf = document.createElement("span");
-        leaf.className = "leaf";
-        leaf.textContent = "🍃";
-        leavesDisplay.appendChild(leaf);
-      }, i * 200); // Slower animation since fewer leaves
-    }
-  }
+          // Add animated leaves (now limited to 1-5)
+          for (let i = 0; i < leafCount; i++) {
+            setTimeout(() => {
+              const leaf = document.createElement("span");
+              leaf.className = "leaf";
+              leaf.textContent = "🍃";
+              leavesDisplay.appendChild(leaf);
+            }, i * 200); // Slower animation since fewer leaves
+          }
+        }
 
-  // Show result section
-  const result = document.getElementById("result");
-  if (result) {
-    result.classList.add("show");
-    result.scrollIntoView({ behavior: "smooth" });
+        // Show result section
+        const result = document.getElementById("result");
+        if (result) {
+          result.classList.add("show");
+          result.scrollIntoView({ behavior: "smooth" });
+        }
+      }
 
       // ===== SOCIAL SHARING =====
 
