@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>簡易碳足跡計算器</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      background-color: #f0f8f5;
+    }
+    h1 {
+      color: #2b7a4b;
+    }
+    label {
+      display: block;
+      margin: 8px 0;
+    }
+    button {
+      margin-top: 16px;
+      padding: 8px 16px;
+      background-color: #2b7a4b;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      background: #e6f2ed;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌿 我的減碳行動清單 🌿</h1>
+  <p>請勾選你今天有做到的行為：</p>
+
+  <label><input type="checkbox" value="2"> 🚶‍♂️ 步行或騎車上下班 (減少 2kg CO₂)</label>
+  <label><input type="checkbox" value="1"> ☕ 自備環保杯 (減少 1kg CO₂)</label>
+  <label><input type="checkbox" value="3"> 🚗 少開車 30 公里 (減少 3kg CO₂)</label>
+  <label><input type="checkbox" value="0.5"> 🛍️ 不使用塑膠袋 (減少 0.5kg CO₂)</label>
+
+  <button onclick="calculate()">計算結果</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    function calculate() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let total = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) {
+          total += parseFloat(cb.value);
+        }
+      });
+      const leaves = Math.round(total / 2); // 每 2kg CO₂ 換算成 1 片葉子
+      document.getElementById('result').innerHTML =
+        `🎉 你今天總共減少了 ${total.toFixed(1)} kg CO₂，<br>相當於貢獻了 ${leaves} 片樹葉！🌱<br>請領取 ${leaves} 片葉子，貼到 ESG 大樹上！`;
+    }
+  </script>
+</body>
+</html>
