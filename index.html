@@ -118,11 +118,12 @@
       .hero-badge {
         display: inline-block;
         background: rgba(255, 255, 255, 0.2);
-        padding: 8px 20px;
-        border-radius: 25px;
-        font-size: 0.9em;
-        letter-spacing: 2px;
-        margin-bottom: 20px;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-size: 1.2em;
+        font-weight: bold;
+        letter-spacing: 3px;
+        margin-bottom: 30px;
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.3);
       }
@@ -188,6 +189,59 @@
       .analysis-content {
         max-width: 1000px;
         text-align: center;
+      }
+
+      .analysis-chart-container {
+        position: relative;
+        display: inline-block;
+        margin: 20px 0;
+      }
+
+      .chart-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(45, 90, 45, 0.1);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .analysis-chart-container:hover .chart-overlay {
+        opacity: 1;
+      }
+
+      .chart-insights {
+        display: flex;
+        gap: 30px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .insight-item {
+        text-align: center;
+        min-width: 100px;
+      }
+
+      .insight-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #2d5a2d;
+        margin-bottom: 5px;
+      }
+
+      .insight-label {
+        font-size: 0.9rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
       .section-title {
@@ -704,11 +758,29 @@
     <section class="section analysis-section">
       <div class="analysis-content">
         <h2 class="section-title">CARBON FOOTPRINT ANALYSIS</h2>
-        <img
-          src="https://raw.githubusercontent.com/RachelHsieh/esg-carbon-forest-game/main/slide%201.jpg"
-          alt="Carbon Footprint Analysis Chart"
-          class="analysis-image"
-        />
+        <div class="analysis-chart-container">
+          <img
+            src="https://raw.githubusercontent.com/RachelHsieh/esg-carbon-forest-game/main/slide%201.jpg"
+            alt="Carbon Footprint Analysis Chart"
+            class="analysis-image"
+          />
+          <div class="chart-overlay">
+            <div class="chart-insights">
+              <div class="insight-item">
+                <div class="insight-number">65%</div>
+                <div class="insight-label">Product Emissions</div>
+              </div>
+              <div class="insight-item">
+                <div class="insight-number">35%</div>
+                <div class="insight-label">Operations</div>
+              </div>
+              <div class="insight-item">
+                <div class="insight-number">233,640</div>
+                <div class="insight-label">Total mTCO₂e</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -733,7 +805,7 @@
           </ul>
         </div>
         <div class="impact-chart">
-          <h3 style="margin-bottom: 20px; text-align: center;">Product Impact </h3>
+          <h3 style="margin-bottom: 20px; text-align: center;">Product Impact</h3>
           <div class="impact-stats-grid">
             <div class="impact-stat-card">
               <div class="impact-stat-number">65%</div>
@@ -751,8 +823,7 @@
             </div>
           </div>
           <p class="chart-note">
-            Product emissions by category show bikes contribute to 90% of
-            product emissions, including OE equipment
+            *Bikeemission include OEM emmisions
           </p>
         </div>
       </div>
