@@ -1290,6 +1290,18 @@
     </div>
 
     <script>
+      // Toggle category visibility in game section
+      function toggleCategory(categoryId) {
+        const content = document.getElementById(categoryId);
+        if (content.style.display === 'none' || content.style.display === '') {
+          content.style.display = 'block';
+        } else {
+          content.style.display = 'none';
+        }
+      }
+
+      // Show detailed breakdown
+      function showDetailedBreakdown()
       // Show detailed breakdown
       function showDetailedBreakdown() {
         document.getElementById('detailed-breakdown').style.display = 'flex';
