@@ -755,7 +755,196 @@
               <div class="impact-stat-label">Total mTCO₂e</div>
             </div>
           </div>
+          <div style="text-align: center; margin-top: 30px;">
+            <button class="hero-cta" onclick="showDetailedBreakdown()" style="padding: 15px 30px; font-size: 1.1em;">
+              View Detailed Breakdown 📊
+            </button>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Detailed Carbon Footprint Visualization Section -->
+    <section class="section detailed-footprint-section" id="detailed-breakdown" style="display: none; background: transparent; color: white;">
+      <div style="max-width: 1200px; width: 100%;">
+        <div style="text-align: center; margin-bottom: 40px;">
+          <h2 class="section-title" style="color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+            Detailed Carbon Footprint Breakdown
+          </h2>
+          <button onclick="hideDetailedBreakdown()" style="background: rgba(255,255,255,0.2); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; margin-top: 10px;">
+            ← Back to Overview
+          </button>
+        </div>
+
+        <!-- Main Breakdown Chart -->
+        <div style="background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);">
+          <h3 style="color: #2d5a2d; text-align: center; margin-bottom: 30px; font-size: 1.8em;">
+            2024 Corporate Carbon Footprint: 357,635 mTCO₂e
+          </h3>
+          
+          <!-- Interactive Donut Chart -->
+          <div class="donut-chart-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+            <div class="donut-chart" style="position: relative; width: 300px; height: 300px;">
+              <svg width="300" height="300" style="transform: rotate(-90deg);">
+                <!-- Product Emissions Arc (65%) -->
+                <circle 
+                  cx="150" cy="150" r="120" 
+                  fill="none" 
+                  stroke="#E53E3E" 
+                  stroke-width="40"
+                  stroke-dasharray="489.6 264.2"
+                  stroke-dashoffset="0"
+                  class="chart-segment product-segment"
+                  data-category="product"
+                  style="cursor: pointer; transition: all 0.3s;"
+                >
+                </circle>
+                <!-- Operations Arc (35%) -->
+                <circle 
+                  cx="150" cy="150" r="120" 
+                  fill="none" 
+                  stroke="#4299E1" 
+                  stroke-width="40"
+                  stroke-dasharray="263.9 489.9"
+                  stroke-dashoffset="-489.6"
+                  class="chart-segment operations-segment"
+                  data-category="operations"
+                  style="cursor: pointer; transition: all 0.3s;"
+                >
+                </circle>
+                <!-- Center Circle -->
+                <circle cx="150" cy="150" r="80" fill="white" stroke="#e2e8f0" stroke-width="2"></circle>
+              </svg>
+              <!-- Center Text -->
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none;">
+                <div style="font-size: 2.5em; font-weight: bold; color: #2d5a2d;" id="center-percentage">100%</div>
+                <div style="font-size: 0.9em; color: #666;" id="center-label">Total Emissions</div>
+                <div style="font-size: 0.8em; color: #888; margin-top: 5px;" id="center-value">357,635 mTCO₂e</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Legend -->
+          <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 30px;">
+            <div class="legend-item" data-category="product" style="display: flex; align-items: center; cursor: pointer; padding: 10px; border-radius: 10px; transition: all 0.3s;">
+              <div style="width: 20px; height: 20px; background: #E53E3E; border-radius: 3px; margin-right: 10px;"></div>
+              <div>
+                <div style="font-weight: bold; color: #2d5a2d;">Product Emissions</div>
+                <div style="font-size: 0.9em; color: #666;">65% (233,640 mTCO₂e)</div>
+              </div>
+            </div>
+            <div class="legend-item" data-category="operations" style="display: flex; align-items: center; cursor: pointer; padding: 10px; border-radius: 10px; transition: all 0.3s;">
+              <div style="width: 20px; height: 20px; background: #4299E1; border-radius: 3px; margin-right: 10px;"></div>
+              <div>
+                <div style="font-weight: bold; color: #2d5a2d;">Operations</div>
+                <div style="font-size: 0.9em; color: #666;">35% (124,995 mTCO₂e)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Breakdown Cards -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+          
+          <!-- Product Emissions Breakdown -->
+          <div class="breakdown-card" id="product-breakdown" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); border-left: 5px solid #E53E3E;">
+            <h4 style="color: #E53E3E; margin-bottom: 20px; font-size: 1.5em; display: flex; align-items: center;">
+              <span style="margin-right: 10px;">🏭</span>
+              Product Emissions (65%)
+            </h4>
+            <div style="margin-bottom: 20px; padding: 15px; background: #FED7D7; border-radius: 10px;">
+              <div style="font-size: 1.2em; font-weight: bold; color: #E53E3E;">233,640 mTCO₂e</div>
+              <div style="font-size: 0.9em; color: #666;">Material, Manufacturing, Assembly</div>
+            </div>
+            <div class="progress-bar" style="background: #f0f0f0; border-radius: 10px; overflow: hidden; height: 40px;">
+              <div style="background: linear-gradient(45deg, #E53E3E, #C53030); height: 100%; width: 65%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                65%
+              </div>
+            </div>
+            <div style="margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+              <div style="font-size: 0.9em; color: #666; margin-bottom: 8px;">Key Components:</div>
+              <div style="font-size: 0.85em; color: #555;">
+                • Raw material extraction and processing<br>
+                • Manufacturing processes and energy<br>
+                • Product assembly and quality control<br>
+                • Packaging and preparation for distribution
+              </div>
+            </div>
+          </div>
+
+          <!-- Operations Breakdown -->
+          <div class="breakdown-card" id="operations-breakdown" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); border-left: 5px solid #4299E1;">
+            <h4 style="color: #4299E1; margin-bottom: 20px; font-size: 1.5em; display: flex; align-items: center;">
+              <span style="margin-right: 10px;">⚙️</span>
+              Operations (35%)
+            </h4>
+            <div style="margin-bottom: 20px; padding: 15px; background: #BEE3F8; border-radius: 10px;">
+              <div style="font-size: 1.2em; font-weight: bold; color: #4299E1;">123,995 mTCO₂e</div>
+              <div style="font-size: 0.9em; color: #666;">Business Operations & Distribution</div>
+            </div>
+            
+            <!-- Operations Sub-breakdown -->
+            <div class="operations-details">
+              <div class="operation-item" style="display: flex; justify-content: between; align-items: center; margin-bottom: 12px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
+                <div style="display: flex; align-items: center; flex: 1;">
+                  <span style="margin-right: 8px;">🚛</span>
+                  <span style="font-size: 0.9em;">In & Outbound</span>
+                </div>
+                <div style="font-weight: bold; color: #4299E1;">14%</div>
+              </div>
+              
+              <div class="operation-item" style="display: flex; justify-content: between; align-items: center; margin-bottom: 12px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
+                <div style="display: flex; align-items: center; flex: 1;">
+                  <span style="margin-right: 8px;">🔋</span>
+                  <span style="font-size: 0.9em;">Battery Charging</span>
+                </div>
+                <div style="font-weight: bold; color: #4299E1;">6%</div>
+              </div>
+              
+              <div class="operation-item" style="display: flex; justify-content: between; align-items: center; margin-bottom: 12px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
+                <div style="display: flex; align-items: center; flex: 1;">
+                  <span style="margin-right: 8px;">🔧</span>
+                  <span style="font-size: 0.9em;">Others</span>
+                </div>
+                <div style="font-weight: bold; color: #4299E1;">6%</div>
+              </div>
+              
+              <div class="operation-item" style="display: flex; justify-content: between; align-items: center; margin-bottom: 12px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
+                <div style="display: flex; align-items: center; flex: 1;">
+                  <span style="margin-right: 8px;">🏪</span>
+                  <span style="font-size: 0.9em;">Owned Retail</span>
+                </div>
+                <div style="font-weight: bold; color: #4299E1;">3%</div>
+              </div>
+              
+              <div class="operation-item" style="display: flex; justify-content: between; align-items: center; margin-bottom: 12px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
+                <div style="display: flex; align-items: center; flex: 1;">
+                  <span style="margin-right: 8px;">🏢</span>
+                  <span style="font-size: 0.9em;">Warehousing</span>
+                </div>
+                <div style="font-weight: bold; color: #4299E1;">2%</div>
+              </div>
+              
+              <div class="operation-item" style="display: flex; justify-content: between; align-items: center; margin-bottom: 12px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
+                <div style="display: flex; align-items: center; flex: 1;">
+                  <span style="margin-right: 8px;">🏢</span>
+                  <span style="font-size: 0.9em;">SBC Office</span>
+                </div>
+                <div style="font-weight: bold; color: #4299E1;">1%</div>
+              </div>
+              
+              <div class="operation-item" style="display: flex; justify-content: between; align-items: center; margin-bottom: 12px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
+                <div style="display: flex; align-items: center; flex: 1;">
+                  <span style="margin-right: 8px;">✈️</span>
+                  <span style="font-size: 0.9em;">Travel & Commuting</span>
+                </div>
+                <div style="font-weight: bold; color: #4299E1;">1%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </section>
 
@@ -1117,19 +1306,151 @@
     </div>
 
     <script>
-      // Toggle category visibility
-      function toggleCategory(categoryId) {
-        const content = document.getElementById(categoryId);
-        const isVisible = content.style.display === 'block';
+      // Show detailed breakdown
+      function showDetailedBreakdown() {
+        document.getElementById('detailed-breakdown').style.display = 'flex';
+        document.getElementById('detailed-breakdown').scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
         
-        // Close all categories first
-        const allCategories = document.querySelectorAll('.category-content');
-        allCategories.forEach(cat => cat.style.display = 'none');
+        // Add animation to donut chart
+        setTimeout(() => {
+          addChartInteractivity();
+        }, 500);
+      }
+
+      // Hide detailed breakdown
+      function hideDetailedBreakdown() {
+        document.getElementById('detailed-breakdown').style.display = 'none';
+        document.querySelector('.analysis-section').scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+
+      // Add interactivity to donut chart
+      function addChartInteractivity() {
+        const segments = document.querySelectorAll('.chart-segment');
+        const legendItems = document.querySelectorAll('.legend-item');
+        const centerPercentage = document.getElementById('center-percentage');
+        const centerLabel = document.getElementById('center-label');
+        const centerValue = document.getElementById('center-value');
         
-        // Toggle current category
-        if (!isVisible) {
-          content.style.display = 'block';
-        }
+        const data = {
+          product: {
+            percentage: '65%',
+            label: 'Product Emissions',
+            value: '233,640 mTCO₂e',
+            color: '#E53E3E'
+          },
+          operations: {
+            percentage: '35%',
+            label: 'Operations',
+            value: '123,995 mTCO₂e',
+            color: '#4299E1'
+          }
+        };
+
+        // Add hover effects to segments
+        segments.forEach(segment => {
+          segment.addEventListener('mouseenter', function() {
+            const category = this.getAttribute('data-category');
+            const categoryData = data[category];
+            
+            // Update center text
+            centerPercentage.textContent = categoryData.percentage;
+            centerLabel.textContent = categoryData.label;
+            centerValue.textContent = categoryData.value;
+            
+            // Highlight segment
+            this.style.strokeWidth = '45';
+            this.style.filter = 'brightness(1.1)';
+            
+            // Highlight corresponding breakdown card
+            const breakdownCard = document.getElementById(category + '-breakdown');
+            if (breakdownCard) {
+              breakdownCard.style.transform = 'scale(1.02)';
+              breakdownCard.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.2)';
+            }
+          });
+
+          segment.addEventListener('mouseleave', function() {
+            // Reset center text
+            centerPercentage.textContent = '100%';
+            centerLabel.textContent = 'Total Emissions';
+            centerValue.textContent = '357,635 mTCO₂e';
+            
+            // Reset segment
+            this.style.strokeWidth = '40';
+            this.style.filter = 'none';
+            
+            // Reset breakdown card
+            const category = this.getAttribute('data-category');
+            const breakdownCard = document.getElementById(category + '-breakdown');
+            if (breakdownCard) {
+              breakdownCard.style.transform = 'scale(1)';
+              breakdownCard.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }
+          });
+        });
+
+        // Add hover effects to legend items
+        legendItems.forEach(item => {
+          item.addEventListener('mouseenter', function() {
+            const category = this.getAttribute('data-category');
+            const categoryData = data[category];
+            
+            // Update center text
+            centerPercentage.textContent = categoryData.percentage;
+            centerLabel.textContent = categoryData.label;
+            centerValue.textContent = categoryData.value;
+            
+            // Highlight legend item
+            this.style.backgroundColor = '#f0f8f0';
+            this.style.transform = 'scale(1.05)';
+            
+            // Highlight corresponding segment
+            const segment = document.querySelector(`.${category}-segment`);
+            if (segment) {
+              segment.style.strokeWidth = '45';
+              segment.style.filter = 'brightness(1.1)';
+            }
+
+            // Highlight corresponding breakdown card
+            const breakdownCard = document.getElementById(category + '-breakdown');
+            if (breakdownCard) {
+              breakdownCard.style.transform = 'scale(1.02)';
+              breakdownCard.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.2)';
+            }
+          });
+
+          item.addEventListener('mouseleave', function() {
+            // Reset center text
+            centerPercentage.textContent = '100%';
+            centerLabel.textContent = 'Total Emissions';
+            centerValue.textContent = '357,635 mTCO₂e';
+            
+            // Reset legend item
+            this.style.backgroundColor = 'transparent';
+            this.style.transform = 'scale(1)';
+            
+            // Reset segment
+            const category = this.getAttribute('data-category');
+            const segment = document.querySelector(`.${category}-segment`);
+            if (segment) {
+              segment.style.strokeWidth = '40';
+              segment.style.filter = 'none';
+            }
+
+            // Reset breakdown card
+            const breakdownCard = document.getElementById(category + '-breakdown');
+            if (breakdownCard) {
+              breakdownCard.style.transform = 'scale(1)';
+              breakdownCard.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }
+          });
+        });
       }
 
       // Calculate leaves on scale 1-5 based on CO₂ saved
