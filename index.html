@@ -323,24 +323,6 @@
         color: black;
       }
 
-      /* Barriers Section */
-      .barriers-section {
-        background: transparent;
-        color: white;
-      }
-
-      .barriers-content {
-        max-width: 1000px;
-        text-align: center;
-      }
-
-      .barriers-image {
-        max-width: 100%;
-        height: auto;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      }
-
       /* Game Section */
       .game-section {
         background: transparent;
@@ -856,7 +838,7 @@
               <div style="font-size: 1.2em; font-weight: bold; color: #E53E3E;">233,640 mTCO₂e</div>
               <div style="font-size: 0.9em; color: #666;">Material, Manufacturing, Assembly</div>
             </div>
-            <div class="progress-bar" style="background: #f0f0f0; border-radius: 10px; overflow: hidden; height: 40px;">
+            <div style="background: #f0f0f0; border-radius: 10px; overflow: hidden; height: 40px;">
               <div style="background: linear-gradient(45deg, #E53E3E, #C53030); height: 100%; width: 65%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
                 65%
               </div>
@@ -872,8 +854,24 @@
             </div>
           </div>
 
-          <!-- Operations Sub-breakdown -->
-            <div class="operations-details">
+          <!-- Operations Breakdown -->
+          <div class="breakdown-card" id="operations-breakdown" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); border-left: 5px solid #4299E1;">
+            <h4 style="color: #4299E1; margin-bottom: 20px; font-size: 1.5em; display: flex; align-items: center;">
+              <span style="margin-right: 10px;">⚡</span>
+              Operations (35%)
+            </h4>
+            <div style="margin-bottom: 20px; padding: 15px; background: #E6F3FF; border-radius: 10px;">
+              <div style="font-size: 1.2em; font-weight: bold; color: #4299E1;">124,995 mTCO₂e</div>
+              <div style="font-size: 0.9em; color: #666;">Logistics, Energy, Facilities</div>
+            </div>
+            <div style="background: #f0f0f0; border-radius: 10px; overflow: hidden; height: 40px;">
+              <div style="background: linear-gradient(45deg, #4299E1, #3182CE); height: 100%; width: 35%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                35%
+              </div>
+            </div>
+
+            <!-- Operations Sub-breakdown -->
+            <div class="operations-details" style="margin-top: 20px;">
               <div class="operation-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
                 <div style="display: flex; align-items: center; flex: 1;">
                   <span style="margin-right: 8px;">🚛</span>
@@ -932,7 +930,6 @@
             </div>
           </div>
         </div>
-
 
       </div>
     </section>
@@ -1301,8 +1298,6 @@
       }
 
       // Show detailed breakdown
-      function showDetailedBreakdown()
-      // Show detailed breakdown
       function showDetailedBreakdown() {
         document.getElementById('detailed-breakdown').style.display = 'flex';
         document.getElementById('detailed-breakdown').scrollIntoView({ 
@@ -1314,15 +1309,6 @@
         setTimeout(() => {
           addChartInteractivity();
         }, 500);
-      }
-
-      // Hide detailed breakdown
-      function hideDetailedBreakdown() {
-        document.getElementById('detailed-breakdown').style.display = 'none';
-        document.querySelector('.analysis-section').scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'center'
-        });
       }
 
       // Add interactivity to donut chart
@@ -1343,7 +1329,7 @@
           operations: {
             percentage: '35%',
             label: 'Operations',
-            value: '123,995 mTCO₂e',
+            value: '124,995 mTCO₂e',
             color: '#4299E1'
           }
         };
@@ -1407,7 +1393,7 @@
             this.style.transform = 'scale(1.05)';
             
             // Highlight corresponding segment
-            const segment = document.querySelector(`.${category}-segment`);
+            const segment = document.querySelector('.' + category + '-segment');
             if (segment) {
               segment.style.strokeWidth = '45';
               segment.style.filter = 'brightness(1.1)';
@@ -1433,7 +1419,7 @@
             
             // Reset segment
             const category = this.getAttribute('data-category');
-            const segment = document.querySelector(`.${category}-segment`);
+            const segment = document.querySelector('.' + category + '-segment');
             if (segment) {
               segment.style.strokeWidth = '40';
               segment.style.filter = 'none';
@@ -1446,6 +1432,15 @@
               breakdownCard.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
             }
           });
+        });
+      }
+
+      // Hide detailed breakdown
+      function hideDetailedBreakdown() {
+        document.getElementById('detailed-breakdown').style.display = 'none';
+        document.querySelector('.analysis-section').scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
         });
       }
 
